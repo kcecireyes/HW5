@@ -14,7 +14,7 @@ public class MemeProgramUser {
 	
 	public MemeProgramUser (String userName) {
 		
-		MemeProgramGUI gooey = new MemeProgramGUI(2);
+		MemeProgramGUI gooey = new MemeProgramGUI(4);
 		
 	}	
 }
