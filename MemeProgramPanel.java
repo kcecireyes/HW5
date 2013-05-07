@@ -64,103 +64,99 @@ public class MemeProgramPanel implements ActionListener {
 		return outerPanel;
 	}
 	
+	/**
+	* Initialized the array "memes" with values, so that meme[0] is less than meme[1]
+	* @param none
+	*/
 	private void initializeMemes(){
-		/**
-		 * Initializes the array "memes" with values, so that memes[0]<meme[1].
-		 * @param none
-		 */
-		
 		MemeProgramMeme imgur = null;
 		MemeProgramMeme nineGag = null;
 		
 		while (imgur == null || nineGag == null) {
-			try {
-				imgur = new MemeImgur();
-				nineGag = new Meme9Gag();
-
-				while (imgur.compareTo(nineGag) == 0) {
-					imgur = new MemeImgur();
-					nineGag = new Meme9Gag();
-				}
-			} catch (Exception e) {
-				imgur = null;
-				nineGag = null;
+		    try {
+			imgur = new MemeImgur();
+			nineGag = new Meme9Gag();
+			
+			while (imgur.compareTo(nineGag) == 0) {
+			    imgur = new MemeImgur();
+			    nineGag = new Meme9Gag();
 			}
+		    } catch (Exception e) {
+			imgur = null;
+			nineGag = null;
+		    }
 		}
 		if (imgur.compareTo(nineGag) == -1) {
-			memes[0] = imgur;
-			memes[1] = nineGag;
+		    memes[0] = imgur;
+		    memes[1] = nineGag;
 		} else if (imgur.compareTo(nineGag) == 1) {
-			memes[1] = imgur;
-			memes[0] = nineGag;
+		    memes[1] = imgur;
+		    memes[0] = nineGag;
 		}
 		
 		System.out.println(memes[0].toString());
 		System.out.println(memes[1].toString());
 		
 	}
+    
+    private void initializeComponents() {
+	/**
+	 * Sets up the components for each half of the displayed panel.
+	 * @param none
+	 */
+	Image[] images = new Image[2];
+	JLabel[] picLabels = new JLabel[2];
 	
-	private void initializeComponents() {
-		/**
-		 * Sets up the components for each half of the displayed panel.
-		 * @param none
-		 */
-		Image[] images = new Image[2];
-		JLabel[] picLabels = new JLabel[2];
-				
-		String[] imageNames = new String[2];
-		JLabel[] labels = new JLabel[2];
-		JButton[] buttons = new JButton[2];
-		
-		for (int i = 0; i < 2; i++) {
-			images[i] = memes[i].getImage();
-			imageNames[i] = memes[i].getImageName();
-			
-			System.out.println(images[i].toString());
-			picLabels[i] = new JLabel(new ImageIcon(images[i]));
-			
-//			labels[i] = new JLabel(imageNames[i]);
-			
-			buttons[i] = new JButton("Like!");
-			buttons[i].addActionListener(this);
-			
-			components.set(i, includeComponent(components.get(i), (JComponent)picLabels[i]));
-//			components.set(i, includeComponent(components.get(i), (JComponent)labels[i]));
-			components.set(i, includeComponent(components.get(i), (JComponent)buttons[i]));
-		}
-		
+	String[] imageNames = new String[2];
+	JLabel[] labels = new JLabel[2];
+	JButton[] buttons = new JButton[2];
+	
+	for (int i = 0; i < 2; i++) {
+	    images[i] = memes[i].getImage();
+	    imageNames[i] = memes[i].getImageName();
+	    
+	    System.out.println(images[i].toString());
+	    picLabels[i] = new JLabel(new ImageIcon(images[i]));
+	    
+	    //			labels[i] = new JLabel(imageNames[i]);
+	    
+	    buttons[i] = new JButton("Like!");
+	    buttons[i].addActionListener(this);
+	    
+	    components.set(i, includeComponent(components.get(i), (JComponent)picLabels[i]));
+	    //			components.set(i, includeComponent(components.get(i), (JComponent)labels[i]));
+	    components.set(i, includeComponent(components.get(i), (JComponent)buttons[i]));
 	}
 	
-	private JPanel includeContent (JPanel panel, JComponent comp) {
-		/**
-		 * Takes in a JPanel and appends a JComponent;
-		 * @param JPanel panel 
-		 * @param JComponent comp
-		 * @return JPanel
-		 */
-		panel.add(comp);
-		return panel;
-	}
-	
-	
-	private ArrayList<JComponent> includeComponent (ArrayList<JComponent> list, JComponent comp) {
-		/**
-		 * Takes in an ArrayList<JComponent> and appends a JComponent;
-		 * @param ArrayList<JComponent> list corresponding to a panel's components 
-		 * @param JComponent comp
+    }
+    
+    private JPanel includeContent (JPanel panel, JComponent comp) {
+	/**
+	 * Takes in a JPanel and appends a JComponent;
+	 * @param JPanel panel 
+	 * @param JComponent comp
+	 * @return JPanel
+	 */
+	panel.add(comp);
+	return panel;
+    }
+    
+    
+    private ArrayList<JComponent> includeComponent (ArrayList<JComponent> list, JComponent comp) {
+	/**
+	 * Takes in an ArrayList<JComponent> and appends a JComponent;
+	 * @param ArrayList<JComponent> list corresponding to a panel's components 
+	 * @param JComponent comp
 		 * @return ArrayList<JComponent> list
 		 */
-		list.add(comp);
-		return list;
+	list.add(comp);
+	return list;
 	}
-	
 
+	
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
-		// TODO Auto-generated method stub
-		
+	// TODO Auto-generated method stub
+	
 	}
-
-	
-	
 }

@@ -3,7 +3,7 @@ import javax.swing.*;
 /**
  * The main graphical portion of the meme-related program we're doing for HW5. 
  * @author Cecilia, Alice, Lowell
- * @version 4/28 1:25
+ * @version 5/4 2:15
  */
 
 public class MemeProgramGUI {
