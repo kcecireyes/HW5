@@ -10,7 +10,7 @@ import org.jsoup.select.*;
 
 /**
  * This Meme object will handle all memes from 9Gag!
- * @author Cecilia, Alice, Lowell  
+ * @author Cecilia, Alice, Lowell --- I hope this is working  
  * @version 4/28 1:00
  */
 
