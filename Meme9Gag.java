@@ -106,15 +106,7 @@ public class Meme9Gag extends MemeProgramMeme implements Comparable<MemeProgramM
 	public String findImage() {
 		images = scrapeImages();
 		imageURL = images.get(imageCallCount);
-		while (imageURL == null) {	
-			//TODO FIND the clean, complete link to the meme image in a procedural way.
-			
-//			imageURL = "http://d24w6bsrhbeh9d.cloudfront.net/photo/ay7GwW8_700b.jpg";
-//			imageURL = "http://d24w6bsrhbeh9d.cloudfront.net/photo/ag3WzDW_700b.jpg";
-//			imageURL = "http://i.imgur.com/obkdEr1.gif?1";
-			
-			//TODO Did you set imageURL equal to the real, nice meme's address?
-		}
+//		imageURL = "http://d24w6bsrhbeh9d.cloudfront.net/photo/abX9B9O_460s.jpg";
 		
 		imageCallCount = imageCallCount + 1;
 		System.out.println(imageURL);

@@ -18,6 +18,7 @@ public class MemeProgramPanel implements ActionListener {
 	private ArrayList<ArrayList<JComponent>> components;
 	private JPanel outerPanel;
 	private JPanel[] innerPanels;
+	private JScrollPane[] innerScrollPanels;
 	
 	public MemeProgramPanel () {
 		/**
@@ -34,22 +35,26 @@ public class MemeProgramPanel implements ActionListener {
 		outerPanel = new JPanel();
 		outerPanel.setLayout(new BoxLayout(outerPanel, BoxLayout.LINE_AXIS));
 		innerPanels = new JPanel[2];
+		innerScrollPanels = new JScrollPane[2];
 		
 		for (int i = 0; i < 2; i++) {
 			innerPanels[i] = new JPanel();
-			innerPanels[i].setLayout(new BoxLayout(innerPanels[i], BoxLayout.PAGE_AXIS));
+			innerScrollPanels[i] = new JScrollPane(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
 			
-//			innerPanels[i].add(Box.createRigidArea(new Dimension(memeSize, memeSize)));
+			innerPanels[i].setLayout(new BoxLayout(innerPanels[i], BoxLayout.PAGE_AXIS));
+			innerScrollPanels[i].setLayout(new ScrollPaneLayout());
 			
 			for (JComponent j : components.get(i)) {
 				innerPanels[i].add(j);
 			}
 			
-			innerPanels[i].validate();
-			outerPanel.add(innerPanels[i]);	
-			if (i != 2) {
-				outerPanel.add(Box.createRigidArea(new Dimension(80, 80)));
-			}
+			innerScrollPanels[i].setViewportView(innerPanels[i]);
+			
+			innerScrollPanels[i].validate();
+			outerPanel.add(innerScrollPanels[i]);	
+//			if (i != 2) {
+//				outerPanel.add(Box.createRigidArea(new Dimension(80, 80)));
+//			}
 		}
 		
 		System.out.println("Your newest panel is ready to add to the GUI!");

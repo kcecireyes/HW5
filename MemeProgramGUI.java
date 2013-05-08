@@ -40,7 +40,7 @@ public class MemeProgramGUI {
 		tabbedPane.doLayout();
 		frame.add(tabbedPane);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setSize(1300, 1200);
+		frame.setSize(1200, 900);
 		frame.setVisible(true);
 		
 	}

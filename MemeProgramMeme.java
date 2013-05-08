@@ -150,11 +150,11 @@ public abstract class MemeProgramMeme implements Comparable<MemeProgramMeme> {
 		 * Try to get it to fit in a size like 100x100 or 200x200...
 		 * @return boolean It's true if the resizing process is successful.
 		 */
-		try {
-			image = image.getScaledInstance(600, 800, 0);
-		} catch (Exception e) {
-			return false;
-		} 
+//		try {
+//			image = image.getScaledInstance(600, 800, 0);
+//		} catch (Exception e) {
+//			return false;
+//		} 
 		return true;
 	}
 	
