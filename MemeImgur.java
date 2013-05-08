@@ -16,8 +16,8 @@ public class MemeImgur extends MemeProgramMeme implements Comparable<MemeProgram
 
 	private final static String website = "http://www.imgur.com/";
 	private String imageURL;
-	private int count=0;
-	private int imgcount=0;
+	private static int count=0;
+	private static int imgcount=0;
 	private ArrayList<String> imageURLs = new ArrayList<String>();
 	private ArrayList<String> jpgs = new ArrayList<String>();
 	private ArrayList<String> imageNames = new ArrayList<String>();
