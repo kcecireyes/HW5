@@ -25,7 +25,14 @@ public class MemeProgramGUI {
 		memePanels = new MemeProgramPanel[quizLength];
 		icons = new Icon[quizLength];
 		for (int i = 0; i < quizLength; i++) {
-			memePanels[i] = new MemeProgramPanel();
+			memePanels[i] = null;
+			while (memePanels[i] == null) {
+				try {
+					memePanels[i] = new MemeProgramPanel();
+				} catch (Exception e) {
+					
+				}
+			}
 			panels[i] = memePanels[i].getPanel();
 			icons[i] = new ImageIcon("icon0.jpg");
 			tabbedPane.addTab(("Page " + (i + 1) + "!"), icons[i], panels[i]);

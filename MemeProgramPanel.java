@@ -18,7 +18,7 @@ public class MemeProgramPanel implements ActionListener {
 	private JPanel[] innerPanels;
 	private JScrollPane[] innerScrollPanels;
 	
-	public MemeProgramPanel () {
+	public MemeProgramPanel () throws Exception {
 		/**
 		 * This is the data structure to combine diverse memes into one JPanel.
 		 * DO it! Crocodile
@@ -99,7 +99,7 @@ public class MemeProgramPanel implements ActionListener {
 		
 	}
     
-    private void initializeComponents() {
+    private void initializeComponents() throws Exception{
 		/**
 		 * Sets up the components for each half of the displayed panel.
 		 * @param none
