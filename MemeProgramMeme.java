@@ -152,12 +152,12 @@ public abstract class MemeProgramMeme implements Comparable<MemeProgramMeme> {
 		 * @return boolean It's true if the resizing process is successful.
 		 */
 		try {
-			if (image.getHeight(null) > 800) {
+			if (image.getWidth(null) > 600) {
 				//This is to fix big images?
-				image = image.getScaledInstance(-1, 800, 0);
-			} else if (image.getHeight(null) < 400) {
+				image = image.getScaledInstance(600, -1, 0);
+			} else if (image.getWidth(null) < 300) {
 				//This is to fix small images?
-				image = image.getScaledInstance(-1, 800, 0);
+				image = image.getScaledInstance(600, -1, 0);
 			} else {
 				//Do nothing?
 			}
