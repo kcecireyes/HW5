@@ -34,7 +34,11 @@ public class Meme9Gag extends MemeProgramMeme implements Comparable<MemeProgramM
 		imageURL = null;
 	}
 
-	
+	/**
+	 * This method scrapes 9GAG for all jpg images. There will be duplicates in 
+	 * sets of 3, so it will put every third one in an ArrayList.
+	 * @return ArrayList<String> of image links
+	 */
     
     private ArrayList<String> scrapeImages() {
     	
@@ -44,9 +48,11 @@ public class Meme9Gag extends MemeProgramMeme implements Comparable<MemeProgramM
 			gag = Jsoup.connect(website).get();
 		
 		Elements jpgs = gag.select("img[src$=.jpg]");
-		for (int i = 1; i<jpgs.size()-3; i= i+3)  {
+		for (int i = 0; i<jpgs.size(); i++)  {
 			String jpgURL = jpgs.get(i).absUrl("src");
+			if (jpgURL.contains("_tp_")==false) {
 		images.add(jpgURL);
+			}
 		//	System.out.println(testurl);
 		}
 		} catch (IOException e) {
@@ -56,6 +62,12 @@ public class Meme9Gag extends MemeProgramMeme implements Comparable<MemeProgramM
 		return images;
     }
     
+    /**
+     * This method scrapes 9GAG for all meme tags (that little piece of text
+     * that appears next to the meme image. There will be duplicates in 
+	 * sets of 3, so it will put every third one in an ArrayList.
+     * @return ArrayList<String> of a the image names
+     */
     private ArrayList<String> scrapeImageNames() {
     	Document gag;
 		try {
@@ -78,6 +90,12 @@ public class Meme9Gag extends MemeProgramMeme implements Comparable<MemeProgramM
 		}
     	return imageNames;
     }
+    
+    /**
+     * This method scrapes 9GAG for each meme's votes, and adds it to an ArrayList.
+     * It also adds this vote value to the totalVotes variable.
+     * @return ArrayList<String> of votes
+     */
     
 	private ArrayList<String> scrapeUpvotes() {
 		totalVotes = 0;
@@ -102,6 +120,11 @@ public class Meme9Gag extends MemeProgramMeme implements Comparable<MemeProgramM
     	return upvotes;
     }
     
+	/**
+	 * This method gets the imageURL from the ArrayList of imageURLs in the spot
+	 * of the method call count. It then updates the call count.
+	 * @return imageURL
+	 */
     @Override
 	public String findImage() {
 		images = scrapeImages();
@@ -112,12 +135,21 @@ public class Meme9Gag extends MemeProgramMeme implements Comparable<MemeProgramM
 		System.out.println(imageURL);
 		return imageURL;
 	}
+    
+    /**This method doesn't do jack.
+     * 
+     */
 	@Override
 	public boolean findImageName() {
 		// TODO Auto-generated method stub
 		return true;
 	}
 
+	/**
+	 * This method gets the image name from the ArrayList of image names in the spot
+	 * of the method call count. It then updates the call count.
+	 * @return imageURL
+	 */
 	@Override
 	public boolean cleanImageName() {
 		// TODO Auto-generated method stub
