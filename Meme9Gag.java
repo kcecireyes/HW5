@@ -44,7 +44,7 @@ public class Meme9Gag extends MemeProgramMeme implements Comparable<MemeProgramM
 			gag = Jsoup.connect(website).get();
 		
 		Elements jpgs = gag.select("img[src$=.jpg]");
-		for (int i = 3; i<jpgs.size()-3; i= i+3)  {
+		for (int i = 1; i<jpgs.size()-3; i= i+3)  {
 			String jpgURL = jpgs.get(i).absUrl("src");
 		images.add(jpgURL);
 		//	System.out.println(testurl);
