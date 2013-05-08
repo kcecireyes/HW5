@@ -84,7 +84,6 @@ public class MemeImgur extends MemeProgramMeme implements Comparable<MemeProgram
 	@Override
 	public boolean cleanImageName() {
 		// TODO Auto-generated method stub
-		int count=0;
 		super.imageName = imageNames.get(count);
 		count++;
 		return true;
