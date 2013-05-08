@@ -1,5 +1,3 @@
-import java.awt.Dimension;
-import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -77,16 +75,15 @@ public class MemeProgramPanel implements ActionListener {
 		
 		while (imgur == null || nineGag == null) {
 		    try {
-			imgur = new MemeImgur();
-			nineGag = new Meme9Gag();
-			
-			while (imgur.compareTo(nineGag) == 0) {
-			    imgur = new MemeImgur();
-			    nineGag = new Meme9Gag();
-			}
+				imgur = new MemeImgur();
+				nineGag = new Meme9Gag();
+				
+				while (imgur.compareTo(nineGag) == 0) {
+				    imgur = new MemeImgur();
+				    nineGag = new Meme9Gag();
+				}
 		    } catch (Exception e) {
-			imgur = null;
-			nineGag = null;
+		    	
 		    }
 		}
 		if (imgur.compareTo(nineGag) == -1) {

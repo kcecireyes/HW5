@@ -2,6 +2,7 @@ import java.awt.AlphaComposite;
 import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
+import java.awt.image.ImageObserver;
 import java.awt.image.RescaleOp;
 import java.net.URL;
 
@@ -150,11 +151,19 @@ public abstract class MemeProgramMeme implements Comparable<MemeProgramMeme> {
 		 * Try to get it to fit in a size like 100x100 or 200x200...
 		 * @return boolean It's true if the resizing process is successful.
 		 */
-//		try {
-//			image = image.getScaledInstance(600, 800, 0);
-//		} catch (Exception e) {
-//			return false;
-//		} 
+		try {
+			if (image.getWidth(null) > 600) {
+				//This is to fix big images?
+				image = image.getScaledInstance(600, -1, 0);
+			} else if (image.getWidth(null) < 300) {
+				//This is to fix small images?
+				image = image.getScaledInstance(600, -1, 0);
+			} else {
+				//Do nothing?
+			}
+		} catch (Exception e) {
+			return false;
+		} 
 		return true;
 	}
 	

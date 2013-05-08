@@ -1,4 +1,4 @@
-import javax.swing.*;
+ import javax.swing.*;
 
 /**
  * The main graphical portion of the meme-related program we're doing for HW5. 
@@ -18,7 +18,7 @@ public class MemeProgramGUI {
 	public MemeProgramGUI (int length) {
 		
 		quizLength = length;
-		frame = new JFrame("The Best Meme-Sraping App Ever!");
+		frame = new JFrame("The Best Meme-Scraping App Ever!");
 		tabbedPane = new JTabbedPane(JTabbedPane.NORTH, JTabbedPane.SCROLL_TAB_LAYOUT);
 		
 		//TODO Add a first panel of some sort.
