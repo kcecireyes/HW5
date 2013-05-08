@@ -53,9 +53,6 @@ public class MemeProgramPanel implements ActionListener {
 			
 			innerScrollPanels[i].validate();
 			outerPanel.add(innerScrollPanels[i]);	
-//			if (i != 2) {
-//				outerPanel.add(Box.createRigidArea(new Dimension(80, 80)));
-//			}
 		}
 		
 		System.out.println("Your newest panel is ready to add to the GUI!");
@@ -106,34 +103,33 @@ public class MemeProgramPanel implements ActionListener {
 	}
     
     private void initializeComponents() {
-	/**
-	 * Sets up the components for each half of the displayed panel.
-	 * @param none
-	 */
-	Image[] images = new Image[2];
-	JLabel[] picLabels = new JLabel[2];
-	
-	String[] imageNames = new String[2];
-	JLabel[] labels = new JLabel[2];
-	JButton[] buttons = new JButton[2];
-	
-	for (int i = 0; i < 2; i++) {
-	    images[i] = memes[i].getImage();
-	    imageNames[i] = memes[i].getImageName();
-	    
-	    System.out.println(images[i].toString());
-	    picLabels[i] = new JLabel(new ImageIcon(images[i]));
-	    
-	    //			labels[i] = new JLabel(imageNames[i]);
-	    
-	    buttons[i] = new JButton("Like!");
-	    buttons[i].addActionListener(this);
-	    
-	    components.set(i, includeComponent(components.get(i), (JComponent)picLabels[i]));
-	    //			components.set(i, includeComponent(components.get(i), (JComponent)labels[i]));
-	    components.set(i, includeComponent(components.get(i), (JComponent)buttons[i]));
-	}
-	
+		/**
+		 * Sets up the components for each half of the displayed panel.
+		 * @param none
+		 */
+		Image[] images = new Image[2];
+		JLabel[] picLabels = new JLabel[2];
+		
+		String[] imageNames = new String[2];
+		JLabel[] labels = new JLabel[2];
+		JButton[] buttons = new JButton[2];
+		
+		for (int i = 0; i < 2; i++) {
+		    images[i] = memes[i].getImage();
+		    imageNames[i] = memes[i].getImageName();
+		    
+		    System.out.println(images[i].toString());
+		    picLabels[i] = new JLabel(new ImageIcon(images[i]));
+		    
+		    labels[i] = new JLabel(imageNames[i]);
+		    
+		    buttons[i] = new JButton("Like!");
+		    buttons[i].addActionListener(this);
+		    
+		    components.set(i, includeComponent(components.get(i), (JComponent)labels[i]));
+		    components.set(i, includeComponent(components.get(i), (JComponent)picLabels[i]));
+		    components.set(i, includeComponent(components.get(i), (JComponent)buttons[i]));
+		}
     }
     
     private JPanel includeContent (JPanel panel, JComponent comp) {
