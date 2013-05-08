@@ -7,7 +7,8 @@
 public class MemeProgramMain {
 	/**
 	 * Begins the locally-run version of our meme-related application!
-	 * Creates an array of users, and initializes the first user 
+	 * Creates an array of users, and initializes the first user. 
+	 * Toast should be removed from the toaster.. I will, don't worry..
 	 * @param args (Currently requires no command line arguments)
 	 */
 	
