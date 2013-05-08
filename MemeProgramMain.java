@@ -6,6 +6,7 @@
 
 public class MemeProgramMain {
 	/**
+	 * Alice's Comment is better than your comment. No. Not really. Yours are also nice.
 	 * Begins the locally-run version of our meme-related application!
 	 * Creates an array of users, and initializes the first user 
 	 * @param args (Currently requires no command line arguments)
