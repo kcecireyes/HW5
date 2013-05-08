@@ -23,6 +23,7 @@ public class MemeProgramPanel implements ActionListener {
 	public MemeProgramPanel () {
 		/**
 		 * This is the data structure to combine diverse memes into one JPanel.
+		 * DO it! Crocodile
 		 */
 		memes = new MemeProgramMeme[2];
 		initializeMemes();
