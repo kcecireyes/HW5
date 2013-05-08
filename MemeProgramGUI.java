@@ -21,11 +21,6 @@ public class MemeProgramGUI {
 		frame = new JFrame("The Best Meme-Scraping App Ever!");
 		tabbedPane = new JTabbedPane(JTabbedPane.NORTH, JTabbedPane.SCROLL_TAB_LAYOUT);
 		
-		//TODO Add a first panel of some sort.
-		
-		
-		//************************************
-		
 		panels = new JComponent[quizLength];
 		memePanels = new MemeProgramPanel[quizLength];
 		icons = new Icon[quizLength];
