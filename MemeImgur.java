@@ -7,7 +7,7 @@ import org.jsoup.Jsoup;
 
 
 /**
- * This Meme object will handle all memes from Imgur!
+ * This Meme object is trying to push imgur changes
  * @author Cecilia, Alice, Lowell  
  * @version 4/28 1:00
  */
