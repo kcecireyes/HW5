@@ -14,7 +14,7 @@ public class MemeProgramMain {
 	public static void main(String[] args) {
 		
 		MemeProgramUser[] users = new MemeProgramUser[1]; // hard coding two users capability?
-		users[0] = new MemeProgramUser("");
+		users[0] = new MemeProgramUser(""); //this is Cecilia's edits 
 		
 	}
 }
