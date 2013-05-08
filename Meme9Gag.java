@@ -148,7 +148,7 @@ public class Meme9Gag extends MemeProgramMeme implements Comparable<MemeProgramM
 	/**
 	 * This method gets the image name from the ArrayList of image names in the spot
 	 * of the method call count. It then updates the call count.
-	 * @return imageURL
+	 * 
 	 */
 	@Override
 	public boolean cleanImageName() {
@@ -160,13 +160,19 @@ public class Meme9Gag extends MemeProgramMeme implements Comparable<MemeProgramM
 		imageNameCallCount = imageNameCallCount + 1;
 		return true;
 	}
-	
+	/**
+	 * This method doesn't do jack.
+	 */
 	@Override
 	public boolean findUpvote() {
 		// TODO Auto-generated method stub Interior crocodile alligator, I drive a chevrolet movie theater.
 		return true;
 	}
-
+/**
+ * This method takes the upvotes for a particular meme in the ArrayList
+ * at the call count and divides it by the totalVotes. This value is multiplied
+ * by 100 to get the percent which is sent to the super.
+ */
 	@Override
 	public boolean cleanUpvote() {
 		// TODO Auto-generated method stub
