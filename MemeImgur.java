@@ -16,9 +16,12 @@ public class MemeImgur extends MemeProgramMeme implements Comparable<MemeProgram
 
 	private final static String website = "http://www.imgur.com/";
 	private String imageURL;
+	private int count=0;
 	private ArrayList<String> imageURLs = new ArrayList<String>();
 	private ArrayList<String> jpgs = new ArrayList<String>();
 	private ArrayList<String> imageNames = new ArrayList<String>();
+	private ArrayList<String> imageVotes = new ArrayList<String>(); 
+
 	private Elements iURLs;
 	
 	public MemeImgur() throws Exception {
@@ -45,7 +48,8 @@ public class MemeImgur extends MemeProgramMeme implements Comparable<MemeProgram
 				Document doc = Jsoup.connect(imageURLs.get(j)).get();
 				Elements indivImages = doc.select("div#content").select("div.panel");
 				imageNames.add(indivImages.select("h2").text());
-				Elements jpgUrl = indivImages.select("div#image").select("img[src$=.jpg");
+				imageVotes.add(indivImages.select("div#under-image").select("div.info").select("div.left").select("span:nth-child(1)").text());
+				Elements jpgUrl = indivImages.select("div#image").select("img[src$=.jpg]");
 				for (int s=0;s<jpgUrl.size();s++) {
 					String jp = jpgUrl.get(s).absUrl("src");
 					if (!jp.equals(null)) {
@@ -57,14 +61,12 @@ public class MemeImgur extends MemeProgramMeme implements Comparable<MemeProgram
 				e.printStackTrace();
 			}
 		}
-		System.out.println("these are names " + imageNames +"\n");
-		System.out.println("these are jpg addresses ... " + jpgs +"\n");	
+		System.out.println("these are names " + imageNames.size() +"\n");
+		System.out.println("these are jpg addresses ... " + jpgs.size() +"\n");	
 	}
 
 	@Override
 	public String findImage() {
-		
-		int count=0;
 		while (imageURL == null) {	
 			//TODO FIND the clean, complete link to the meme image in a procedural way.
 			imageURL=jpgs.get(count);
@@ -90,7 +92,10 @@ public class MemeImgur extends MemeProgramMeme implements Comparable<MemeProgram
 
 	@Override
 	public boolean findUpvote() {
-		// TODO Auto-generated method stub
+	for (int i=0; i>imageVotes.size(); i++) {
+		int vote = Integer.parseInt(imageVotes.get(i));
+		System.out.println("this is the vote " + vote);
+	}
 		return true;
 	}
 
