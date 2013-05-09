@@ -31,6 +31,8 @@ public class MemeProgramMain implements ActionListener {
 	
 	public static void main(String[] args) {
 		frame = new JFrame("The Best Meme-Scraping App Ever!");
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
 		pane = new JPanel();
 		pane.setLayout(new BoxLayout(pane, BoxLayout.PAGE_AXIS));
 		
@@ -46,18 +48,16 @@ public class MemeProgramMain implements ActionListener {
 		pane.validate();
 		pane.doLayout();
 		frame.add(pane);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
 		frame.setSize(400, 300);
 		frame.setVisible(true);
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
-		// TODO Auto-generated method stub
 		frame.setVisible(false);
 		for (MemeProgramUser i : users){
 			i = new MemeProgramUser(userField.getText());
-//			frame.setVisible(true);
 		}
 	}
 }

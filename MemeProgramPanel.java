@@ -130,26 +130,26 @@ public class MemeProgramPanel implements ActionListener {
     }
     
     private JPanel includeContent (JPanel panel, JComponent comp) {
-	/**
-	 * Takes in a JPanel and appends a JComponent;
-	 * @param JPanel panel 
-	 * @param JComponent comp
-	 * @return JPanel
-	 */
-	panel.add(comp);
-	return panel;
+		/**
+		 * Takes in a JPanel and appends a JComponent;
+		 * @param JPanel panel 
+		 * @param JComponent comp
+		 * @return JPanel
+		 */
+		panel.add(comp);
+		return panel;
     }
     
     
     private ArrayList<JComponent> includeComponent (ArrayList<JComponent> list, JComponent comp) {
-	/**
-	 * Takes in an ArrayList<JComponent> and appends a JComponent;
-	 * @param ArrayList<JComponent> list corresponding to a panel's components 
-	 * @param JComponent comp
-		 * @return ArrayList<JComponent> list
-		 */
-	list.add(comp);
-	return list;
+		/**
+		 * Takes in an ArrayList<JComponent> and appends a JComponent;
+		 * @param ArrayList<JComponent> list corresponding to a panel's components 
+		 * @param JComponent comp
+			 * @return ArrayList<JComponent> list
+			 */
+		list.add(comp);
+		return list;
 	}
 
 	@Override

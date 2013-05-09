@@ -16,7 +16,6 @@ public class MemeProgramGUI {
 	private JComponent[] panels;
 	private MemeProgramPanel[] memePanels;
 	private Icon[] icons;
-	
 	private int pagesDisplayed;
 	
 	public MemeProgramGUI (int length) {
@@ -49,7 +48,6 @@ public class MemeProgramGUI {
 		frame.validate();
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setPreferredSize(new Dimension(1200, 900));
-//		frame.setSize(1200, 900);
 		frame.setSize(frame.getPreferredSize());
 		
 		pagesDisplayed = 0;
@@ -58,16 +56,18 @@ public class MemeProgramGUI {
 	}
 	
 	public void addTab() {
-		System.out.println("Adding a Tab! #" + (pagesDisplayed +1) + "...");
-		tabbedPane.addTab(("Page " + (pagesDisplayed + 1) + "!"), icons[pagesDisplayed], panels[pagesDisplayed]);
-		pagesDisplayed++;
-		
-		frame.setVisible(false);
-		tabbedPane.revalidate();
-		tabbedPane.doLayout();
-		frame.revalidate();
-		frame.setVisible(true);
-		
+		if (pagesDisplayed < quizLength){
+			System.out.println("Adding a Tab! #" + (pagesDisplayed +1) + "...");
+			tabbedPane.addTab(("Page " + (pagesDisplayed + 1) + "!"), icons[pagesDisplayed], panels[pagesDisplayed]);
+			pagesDisplayed++;
+			
+			frame.setVisible(false);
+			tabbedPane.revalidate();
+			tabbedPane.doLayout();
+			frame.revalidate();
+			frame.setVisible(true);
+		}
 	}
+	
 	
 }

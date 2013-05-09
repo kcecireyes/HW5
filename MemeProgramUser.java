@@ -15,7 +15,7 @@ import java.awt.event.ActionListener;
 
 public class MemeProgramUser implements ActionListener{
 	
-	private static MemeProgramGUI gooey;
+	public static MemeProgramGUI gooey;
 	public static ActionListener nextTab;
 	
 	public MemeProgramUser (String userName) {
@@ -28,9 +28,10 @@ public class MemeProgramUser implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		System.out.println("Button Clicked!");
+		System.out.println(arg0.getSource().toString());
 		
+		//TODO filter out information from the passed object.
 		gooey.addTab();
-		
 		
 	}	
 	
