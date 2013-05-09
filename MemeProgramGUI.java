@@ -56,7 +56,7 @@ public class MemeProgramGUI {
 	}
 	
 	public void addTab() {
-		if (pagesDisplayed < quizLength){
+		if (pagesDisplayed < quizLength) {
 			System.out.println("Adding a Tab! #" + (pagesDisplayed +1) + "...");
 			tabbedPane.addTab(("Page " + (pagesDisplayed + 1) + "!"), icons[pagesDisplayed], panels[pagesDisplayed]);
 			pagesDisplayed++;
@@ -67,6 +67,17 @@ public class MemeProgramGUI {
 			frame.revalidate();
 			frame.setVisible(true);
 		}
+	}
+	
+	public void addFinalTab(JPanel tempPanel) {
+		frame.setVisible(false);
+		//TODO add in a last panel including statistics and fun stuff!
+		
+		tabbedPane.addTab("Final Page" , icons[0], tempPanel);
+		tabbedPane.revalidate();
+		tabbedPane.doLayout();
+		frame.revalidate();
+		frame.setVisible(true);
 	}
 	
 	

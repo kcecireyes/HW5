@@ -17,12 +17,17 @@ public class MemeProgramPanel implements ActionListener {
 	private JPanel outerPanel;
 	private JPanel[] innerPanels;
 	private JScrollPane[] innerScrollPanels;
+	private static int panelsLiked = 0;
+	private static int panelsMade = 0;
+	private final int thisPanel;
 	
 	public MemeProgramPanel () throws Exception {
 		/**
 		 * This is the data structure to combine diverse memes into one JPanel.
-		 * DO it! Crocodile
 		 */
+		thisPanel = panelsMade;
+		panelsMade++;
+		
 		memes = new MemeProgramMeme[2];
 		initializeMemes();
 		
@@ -129,18 +134,6 @@ public class MemeProgramPanel implements ActionListener {
 		}
     }
     
-    private JPanel includeContent (JPanel panel, JComponent comp) {
-		/**
-		 * Takes in a JPanel and appends a JComponent;
-		 * @param JPanel panel 
-		 * @param JComponent comp
-		 * @return JPanel
-		 */
-		panel.add(comp);
-		return panel;
-    }
-    
-    
     private ArrayList<JComponent> includeComponent (ArrayList<JComponent> list, JComponent comp) {
 		/**
 		 * Takes in an ArrayList<JComponent> and appends a JComponent;
@@ -154,8 +147,22 @@ public class MemeProgramPanel implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		MemeProgramUser.nextTab.actionPerformed(e);
-		
+		//This parses the choice of meme from the latest panel only.
+		if (thisPanel == panelsLiked){
+			for (int i = 0; i < 2; i++) {
+				if (components.get(i).contains(e.getSource())){
+					int id = i;
+					ActionEvent temp = new ActionEvent(e.getSource(), id, "NEW_TAB", (panelsLiked+1));
+					MemeProgramUser.nextTab.actionPerformed(temp);
+					panelsLiked++;
+				}
+			}
+		}
+		//Now this will tell it what to do at the very last panel.
+		if (panelsLiked == panelsMade){
+			ActionEvent temp = new ActionEvent(e.getSource(), panelsMade, "FINAL_TAB");
+			MemeProgramUser.nextTab.actionPerformed(temp);
+		}
 	}
 
 	

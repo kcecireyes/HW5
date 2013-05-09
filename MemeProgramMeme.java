@@ -1,16 +1,11 @@
-import java.awt.AlphaComposite;
-import java.awt.Graphics2D;
 import java.awt.Image;
-import java.awt.image.BufferedImage;
-import java.awt.image.ImageObserver;
-import java.awt.image.RescaleOp;
 import java.net.URL;
 
-import javax.imageio.*;
+import javax.imageio.ImageIO;
 
 import org.jsoup.Jsoup;
-import org.jsoup.nodes.*;
-import org.jsoup.select.*;
+import org.jsoup.nodes.Document;
+import org.jsoup.select.Elements;
 
 /**
  * The abstract Meme object standardizing how memes are scraped from the web.
@@ -152,15 +147,7 @@ public abstract class MemeProgramMeme implements Comparable<MemeProgramMeme> {
 		 * @return boolean It's true if the resizing process is successful.
 		 */
 		try {
-			if (image.getWidth(null) > 600) {
-				//This is to fix big images?
-				image = image.getScaledInstance(600, -1, 0);
-			} else if (image.getWidth(null) < 300) {
-				//This is to fix small images?
-				image = image.getScaledInstance(600, -1, 0);
-			} else {
-				//Do nothing?
-			}
+			image = image.getScaledInstance(550, -1, 0);
 		} catch (Exception e) {
 			return false;
 		} 
