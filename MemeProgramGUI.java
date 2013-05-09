@@ -33,7 +33,7 @@ public class MemeProgramGUI {
 				try {
 					memePanels[i] = new MemeProgramPanel();
 				} catch (Exception e) {
-					
+					System.out.println(e.getMessage());
 				}
 			}
 			panels[i] = memePanels[i].getPanel();

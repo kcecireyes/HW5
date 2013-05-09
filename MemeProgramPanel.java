@@ -77,17 +77,22 @@ public class MemeProgramPanel implements ActionListener {
 		MemeProgramMeme imgur = null;
 		MemeProgramMeme nineGag = null;
 		
-		while (imgur == null || nineGag == null) {
+		while (imgur == null) {
 		    try {
 				imgur = new MemeImgur();
+		    } catch (Exception f) {
+		    	System.out.println(f.getMessage());
+		    	imgur = null;
+		    }
+		}
+		while (nineGag == null) {
+		    try {
 				nineGag = new Meme9Gag();
-				
-				while (imgur.compareTo(nineGag) == 0) {
-				    imgur = new MemeImgur();
-				    nineGag = new Meme9Gag();
-				}
-		    } catch (Exception e) {
-		    	
+		    } catch (IndexOutOfBoundsException e) {
+			    nineGag = new Meme9Gag(true);
+		    } catch (Exception f) {
+		    	System.out.println(f.getMessage());
+				nineGag = null;
 		    }
 		}
 		
@@ -97,6 +102,8 @@ public class MemeProgramPanel implements ActionListener {
 		} else if (imgur.compareTo(nineGag) == 1) {
 		    memes[1] = imgur;
 		    memes[0] = nineGag;
+		} else {
+			throw new Exception();
 		}
 		
 		System.out.println(memes[0].toString());

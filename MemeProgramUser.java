@@ -22,7 +22,7 @@ public class MemeProgramUser implements ActionListener{
 	
 	public MemeProgramUser (String userName) {
 		
-		gooey = new MemeProgramGUI(7);
+		gooey = new MemeProgramGUI(10);
 		nextTab = this;
 		
 	}

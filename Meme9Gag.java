@@ -16,23 +16,35 @@ import org.jsoup.select.*;
 
 public class Meme9Gag extends MemeProgramMeme implements Comparable<MemeProgramMeme> {
 	
-	private final static String website = "http://www.9gag.com/";
-	private Document gag;
+//	private final static String website = "http://www.9gag.com/";
+	private Elements gag;
 	private String imageURL;
-	private ArrayList<String> images = new ArrayList<String>();
-	private ArrayList<String> imageNames = new ArrayList<String>();
-	private ArrayList<String> upvotes = new ArrayList<String>();
+	private static ArrayList<String> images = new ArrayList<String>(0);
+	private static ArrayList<String> imageNames = new ArrayList<String>(0);
+	private static ArrayList<String> upvotes = new ArrayList<String>(0);
 	private static int totalVotes;
 	private static int imageCallCount = 0;
 	private static int imageNameCallCount = 0;
 	private static int voteCallCount = 0;
+	
     public Meme9Gag() throws Exception {
     	/**
 		 * Creates a Meme object, as far as the pieces of it which will be displayed.
 		 * @param none
 		 */
-		super(website);
-    	gag = super.rootDoc;
+		super("http://www.9gag.com/");
+    	gag = super.rootElements;
+
+		imageURL = null;
+	}
+    
+    public Meme9Gag(boolean overflow) throws Exception {
+    	/**
+		 * Creates a Meme object, as far as the pieces of it which will be displayed.
+		 * @param none
+		 */
+		super("http://www.9gag.com/trending");
+    	gag = super.rootElements;
 
 		imageURL = null;
 	}
@@ -51,7 +63,7 @@ public class Meme9Gag extends MemeProgramMeme implements Comparable<MemeProgramM
 		for (int i = 0; i<jpgs.size(); i++)  {
 			String jpgURL = jpgs.get(i).absUrl("src");
 			if (jpgURL.contains("_tp_")==false) {
-		images.add(jpgURL);
+				images.add(jpgURL);
 			}
 		//	System.out.println(testurl);
 		}
@@ -96,10 +108,15 @@ public class Meme9Gag extends MemeProgramMeme implements Comparable<MemeProgramM
 	
 		for (int i = 0; i<votes.size(); i++) {
 			String upvote = votes.get(i).attr("votes");
-		if (upvote.isEmpty()==false){
-		totalVotes = totalVotes + Integer.parseInt(upvote);
-			upvotes.add(upvote);
-		}
+			if (!upvote.isEmpty()){
+				try {
+					totalVotes = totalVotes + Integer.parseInt(upvote);
+				} catch (NumberFormatException e) {
+					upvote = "99";
+					totalVotes = totalVotes + Integer.parseInt(upvote);
+				}
+				upvotes.add(upvote);
+			}
 		}
 	
     	return upvotes;
@@ -142,7 +159,7 @@ public class Meme9Gag extends MemeProgramMeme implements Comparable<MemeProgramM
 		String imageName = imageNames.get(imageNameCallCount);
 			
 		super.imageName = imageName;
-		imageNameCallCount = imageNameCallCount + 1;
+		imageNameCallCount++;
 		return true;
 	}
 	/**
@@ -168,7 +185,7 @@ public class Meme9Gag extends MemeProgramMeme implements Comparable<MemeProgramM
 //		System.out.println(upvotePercent);
 		
 		super.upvote = upvotePercent;
-		voteCallCount = voteCallCount + 1;
+		voteCallCount++;
 		
 		return true;
 	}
