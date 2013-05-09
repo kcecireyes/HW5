@@ -54,7 +54,6 @@ public class MemeProgramPanel implements ActionListener {
 		}
 		
 		System.out.println("Your newest panel is ready to add to the GUI!");
-		
 	}
 	
 	public JPanel getPanel() {
@@ -69,7 +68,7 @@ public class MemeProgramPanel implements ActionListener {
 	* Initialized the array "memes" with values, so that meme[0] is less than meme[1]
 	* @param none
 	*/
-	private void initializeMemes(){
+	private void initializeMemes() throws Exception{
 		MemeProgramMeme imgur = null;
 		MemeProgramMeme nineGag = null;
 		
@@ -86,6 +85,7 @@ public class MemeProgramPanel implements ActionListener {
 		    	
 		    }
 		}
+		
 		if (imgur.compareTo(nineGag) == -1) {
 		    memes[0] = imgur;
 		    memes[1] = nineGag;
@@ -152,10 +152,11 @@ public class MemeProgramPanel implements ActionListener {
 	return list;
 	}
 
-	
 	@Override
-	public void actionPerformed(ActionEvent arg0) {
-	// TODO Auto-generated method stub
-	
+	public void actionPerformed(ActionEvent e) {
+		MemeProgramUser.nextTab.actionPerformed(e);
+		
 	}
+
+	
 }

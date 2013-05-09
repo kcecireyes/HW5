@@ -1,3 +1,6 @@
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 /**
  * The user class of the meme-related program we're doing for HW5. 
  * @author Cecilia, Alice, Lowell
@@ -10,11 +13,27 @@
 * @param String userName
 */
 
-public class MemeProgramUser {
+public class MemeProgramUser implements ActionListener{
+	
+	private static MemeProgramGUI gooey;
+	public static ActionListener nextTab;
 	
 	public MemeProgramUser (String userName) {
 		
-		MemeProgramGUI gooey = new MemeProgramGUI(5);
+		gooey = new MemeProgramGUI(5);
+		nextTab = this;
+		
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent arg0) {
+		System.out.println("Button Clicked!");
+		
+		gooey.addTab();
+		
 		
 	}	
+	
+	
+	
 }
