@@ -1,12 +1,6 @@
-import java.awt.Image;
-import java.io.IOException;
-import java.net.URL;
 import java.util.ArrayList;
 
-import javax.imageio.*;
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.*;
-import org.jsoup.select.*;
+import org.jsoup.select.Elements;
 
 /**
  * This Meme object will handle all memes from 9Gag!
@@ -62,7 +56,7 @@ public class Meme9Gag extends MemeProgramMeme implements Comparable<MemeProgramM
 		Elements jpgs = gag.select("img[src$=.jpg]");
 		for (int i = 0; i<jpgs.size(); i++)  {
 			String jpgURL = jpgs.get(i).absUrl("src");
-			if (jpgURL.contains("_tp_")==false) {
+			if (!jpgURL.contains("_tp_") && !images.contains(jpgURL)) {
 				images.add(jpgURL);
 			}
 		//	System.out.println(testurl);
@@ -86,9 +80,10 @@ public class Meme9Gag extends MemeProgramMeme implements Comparable<MemeProgramM
 	//	System.out.println(names.text());
 		for (int i = 3; i<names.size()-3; i= i+3) {
 			String name = names.get(i).attr("alt");
-	
+			if (!imageNames.contains(name)) {
 			imageNames.add(name);
 			//System.out.println(name);
+			}
 		}
 		
     	return imageNames;
@@ -115,7 +110,10 @@ public class Meme9Gag extends MemeProgramMeme implements Comparable<MemeProgramM
 					upvote = "99";
 					totalVotes = totalVotes + Integer.parseInt(upvote);
 				}
+				if (!upvotes.contains(upvote)) {
+
 				upvotes.add(upvote);
+				}
 			}
 		}
 	
