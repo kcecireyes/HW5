@@ -17,6 +17,7 @@ import org.jsoup.select.*;
 public class Meme9Gag extends MemeProgramMeme implements Comparable<MemeProgramMeme> {
 	
 	private final static String website = "http://www.9gag.com/";
+	private Document gag;
 	private String imageURL;
 	private ArrayList<String> images = new ArrayList<String>();
 	private ArrayList<String> imageNames = new ArrayList<String>();
@@ -31,6 +32,8 @@ public class Meme9Gag extends MemeProgramMeme implements Comparable<MemeProgramM
 		 * @param none
 		 */
 		super(website);
+    	gag = super.rootDoc;
+
 		imageURL = null;
 	}
 
@@ -42,10 +45,7 @@ public class Meme9Gag extends MemeProgramMeme implements Comparable<MemeProgramM
     
     private ArrayList<String> scrapeImages() {
     	
-    	Document gag;
-		try {
-			
-			gag = Jsoup.connect(website).get();
+		
 		
 		Elements jpgs = gag.select("img[src$=.jpg]");
 		for (int i = 0; i<jpgs.size(); i++)  {
@@ -55,10 +55,8 @@ public class Meme9Gag extends MemeProgramMeme implements Comparable<MemeProgramM
 			}
 		//	System.out.println(testurl);
 		}
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		
+	
 		return images;
     }
     
@@ -69,10 +67,7 @@ public class Meme9Gag extends MemeProgramMeme implements Comparable<MemeProgramM
      * @return ArrayList<String> of a the image names
      */
     private ArrayList<String> scrapeImageNames() {
-    	Document gag;
-		try {
 			
-			gag = Jsoup.connect(website).get();
 		
 		Elements names = gag.select("[alt]");
 	
@@ -82,12 +77,8 @@ public class Meme9Gag extends MemeProgramMeme implements Comparable<MemeProgramM
 	
 			imageNames.add(name);
 			//System.out.println(name);
+		}
 		
-		}
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
     	return imageNames;
     }
     
@@ -99,10 +90,7 @@ public class Meme9Gag extends MemeProgramMeme implements Comparable<MemeProgramM
     
 	private ArrayList<String> scrapeUpvotes() {
 		totalVotes = 0;
-    	Document gag;
-		try {
 			
-			gag = Jsoup.connect(website).get();
 		
 		Elements votes = gag.select("span");
 	
@@ -113,10 +101,7 @@ public class Meme9Gag extends MemeProgramMeme implements Comparable<MemeProgramM
 			upvotes.add(upvote);
 		}
 		}
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+	
     	return upvotes;
     }
     

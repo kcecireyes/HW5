@@ -34,7 +34,7 @@ public abstract class MemeProgramMeme implements Comparable<MemeProgramMeme> {
 		 * Creates a Meme object, as far as the pieces of it which will be displayed.
 		 */
 		rootWebsite = website;
-		rootDoc = Jsoup.connect(rootWebsite).get();
+		rootDoc = Jsoup.connect(rootWebsite).timeout(20000).get();
 		rootElements = rootDoc.getAllElements();
 	}
 	

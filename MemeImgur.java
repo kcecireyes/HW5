@@ -45,7 +45,7 @@ public class MemeImgur extends MemeProgramMeme implements Comparable<MemeProgram
 		}	
 
 		for (int j=0;j<imageURLs.size();j++) { //goes into the arrayList of image URLs and fetches their content
-			try{
+//			try{
 				Document doc = Jsoup.connect(imageURLs.get(j)).get();
 				Elements indivImages = doc.select("div#content").select("div.panel");
 				imageNames.add(indivImages.select("h2").text());
@@ -57,10 +57,10 @@ public class MemeImgur extends MemeProgramMeme implements Comparable<MemeProgram
 						jpgs.add(jp);
 					}
 				}
-			}
-			catch(Exception e){
-				e.printStackTrace();
-			}
+//			}
+//			catch(Exception e){
+//				e.printStackTrace();
+//			}
 		}
 		System.out.println("these are names " + imageNames.size() +"\n");
 		System.out.println("these are jpg addresses ... " + jpgs.size() +"\n");	
