@@ -1,6 +1,6 @@
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
+
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -22,11 +22,10 @@ public class MemeProgramUser implements ActionListener{
 	public static MemeProgramGUI gooey;
 	public static ActionListener nextTab;
 	
-	private static ArrayList<Integer> choices = new ArrayList<Integer>();
-	private static int gagTotal = 0;
-	private static int imgurTotal = 0;
+	private static int morePopular = 0;
+	private static int lessPopular = 0;
 	
-	private JLabel preferenceResult;
+	
 	
 	public MemeProgramUser (String userName) {
 		
@@ -52,11 +51,11 @@ public class MemeProgramUser implements ActionListener{
 			//TODO filter out information from the passed object.
 			
 			if (choice == 0) {
-				imgurTotal++;
+				lessPopular++;
 			}
 			
 			else {
-				gagTotal++;
+				morePopular++;
 			}
 			
 			
@@ -68,21 +67,21 @@ public class MemeProgramUser implements ActionListener{
 			JPanel last = new JPanel();
 			JLabel preferenceResult = new JLabel();
 			//TODO Make a JPanel with all of the stuff you want on the last page!
-			
-			if (imgurTotal>gagTotal) {
-				preferenceResult.setText("Congrats! You liked Imgur more than 9Gag.\n" +
-						"Out of 10 memes, you chose " + imgurTotal + " from Imgur.");
-			}
-			
-			else if (gagTotal > imgurTotal) {
-				preferenceResult.setText("Congrats! You liked 9Gag more than Imgur.\n" +
-						"Out of 10 memes, you chose " + gagTotal + " from 9Gag.");
-			}
-			
-			else {
-				preferenceResult.setText("Pick a side, man! You showed no preference for either 9Gag" +
-						"\n or Imgur. ");
-			}
+				
+				if (lessPopular>morePopular) {
+					preferenceResult.setText("Congrats! You are a nonconformist, hipster snob.\n" +
+							"Out of 10 memes, you chose " + lessPopular + " that were of lesser popularity.");
+				}
+				
+				else if (morePopular > lessPopular) {
+					preferenceResult.setText("Congrats! You are a sheep.\n" +
+							"Out of 10 memes, you chose " + morePopular + " that were of greater popularity.");
+				}
+				
+				else {
+					preferenceResult.setText("Congrats. You probably don't have a personality. \n" +
+							"You chose an equal number of memes that were popular and as you did ones that were less popular. ");
+				}
 			
 			last.add(preferenceResult);
 			
