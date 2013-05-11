@@ -64,7 +64,7 @@ public class MemeProgramGUI {
 			frame.setVisible(false);
 			tabbedPane.revalidate();
 			tabbedPane.doLayout();
-			frame.revalidate();
+			frame.validate();
 			frame.setVisible(true);
 		}
 	}
@@ -76,7 +76,7 @@ public class MemeProgramGUI {
 		tabbedPane.addTab("Final Page" , icons[0], tempPanel);
 		tabbedPane.revalidate();
 		tabbedPane.doLayout();
-		frame.revalidate();
+		frame.validate();
 		frame.setVisible(true);
 	}
 	

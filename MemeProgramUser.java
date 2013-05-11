@@ -1,6 +1,8 @@
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 /**
@@ -20,6 +22,12 @@ public class MemeProgramUser implements ActionListener{
 	public static MemeProgramGUI gooey;
 	public static ActionListener nextTab;
 	
+	private static ArrayList<Integer> choices = new ArrayList<Integer>();
+	private static int gagTotal = 0;
+	private static int imgurTotal = 0;
+	
+	private JLabel preferenceResult;
+	
 	public MemeProgramUser (String userName) {
 		
 		gooey = new MemeProgramGUI(10);
@@ -35,11 +43,21 @@ public class MemeProgramUser implements ActionListener{
 			gooey.addTab();
 			int panel = arg0.getModifiers();
 			int choice = arg0.getID();
+			
+			
+			
 			System.out.println("This is the meme that was chosen!: " + choice);
 			System.out.println("This is the panel it was chosen on!: " + panel);
 			
 			//TODO filter out information from the passed object.
 			
+			if (choice == 0) {
+				imgurTotal++;
+			}
+			
+			else {
+				gagTotal++;
+			}
 			
 			
 			
@@ -48,12 +66,25 @@ public class MemeProgramUser implements ActionListener{
 			
 		} else if (arg0.getActionCommand() == "FINAL_TAB") {
 			JPanel last = new JPanel();
-			
+			JLabel preferenceResult = new JLabel();
 			//TODO Make a JPanel with all of the stuff you want on the last page!
 			
+			if (imgurTotal>gagTotal) {
+				preferenceResult.setText("Congrats! You liked Imgur more than 9Gag.\n" +
+						"Out of 10 memes, you chose " + imgurTotal + " from Imgur.");
+			}
 			
+			else if (gagTotal > imgurTotal) {
+				preferenceResult.setText("Congrats! You liked 9Gag more than Imgur.\n" +
+						"Out of 10 memes, you chose " + gagTotal + " from 9Gag.");
+			}
 			
+			else {
+				preferenceResult.setText("Pick a side, man! You showed no preference for either 9Gag" +
+						"\n or Imgur. ");
+			}
 			
+			last.add(preferenceResult);
 			
 			//***************************************************
 			
