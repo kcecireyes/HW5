@@ -50,7 +50,8 @@ public class MemeImgur extends MemeProgramMeme implements Comparable<MemeProgram
 				Elements indivImages = doc.select("div#content").select("div.panel");
 				imageNames.add(indivImages.select("h2").text());
 				imageVotes.add(indivImages.select("div#under-image").select("div.info").select("div.left").select("span:nth-child(1)").text());
-				Elements jpgUrl = indivImages.select("div#image").select("img[src$=.jpg]").select("img:nth-child(1)");
+				Element jpgUrl = indivImages.select("div#image").select("img[src$=.jpg]").first();
+				System.out.println("these are the contents of jpgUrl " + jpgUrl);
 				for (int s=0;s<jpgUrl.size();s++) {
 					String jp = jpgUrl.get(s).absUrl("src");
 					if (!jp.equals(null)) {
@@ -63,7 +64,7 @@ public class MemeImgur extends MemeProgramMeme implements Comparable<MemeProgram
 //			}
 		}
 		System.out.println("these are names " + imageNames.size() +"\n");
-		System.out.println("these are jpg addresses ... " + jpgs.size() +"\n");	
+		//System.out.println("these are jpg addresses ... " + jpgUrl +"\n");	
 	}
 
 	@Override
