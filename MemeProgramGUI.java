@@ -32,9 +32,12 @@ public class MemeProgramGUI {
 			while (memePanels[i] == null) {
 				try {
 					memePanels[i] = new MemeProgramPanel();
+				} catch (IndexOutOfBoundsException d) {
+					memePanels[i] = memePanels[i-1];
+					quizLength--;
 				} catch (Exception e) {
 					System.out.println(e.getMessage());
-				}
+				} 
 			}
 			panels[i] = memePanels[i].getPanel();
 			icons[i] = new ImageIcon("icon0.jpg");
