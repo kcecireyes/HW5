@@ -1,3 +1,4 @@
+import java.awt.Font;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -131,9 +132,13 @@ public class MemeProgramPanel implements ActionListener {
 		    picLabels[i] = new JLabel(new ImageIcon(images[i]));
 		    
 		    labels[i] = new JLabel(imageNames[i]);
+		    labels[i].setSize(600, 50);
+		    labels[i].revalidate();
 		    
 		    buttons[i] = new JButton("Like!");
 		    buttons[i].addActionListener(this);
+		    buttons[i].setSize(600, 50);
+		    buttons[i].revalidate();
 		    
 		    components.set(i, includeComponent(components.get(i), (JComponent)labels[i]));
 		    components.set(i, includeComponent(components.get(i), (JComponent)picLabels[i]));
@@ -155,14 +160,13 @@ public class MemeProgramPanel implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		//This parses the choice of meme from the latest panel only.
-//		System.out.println("Button Pressed. Processing...");
 		if (thisPanel == panelsLiked){
 			for (int i = 0; i < 2; i++) {
 				if (components.get(i).contains(e.getSource())){
 					int id = i;
-					ActionEvent temp = new ActionEvent(e.getSource(), id, "NEW_TAB", (panelsLiked+1));
-					MemeProgramUser.nextTab.actionPerformed(temp);
 					panelsLiked++;
+					ActionEvent temp = new ActionEvent(e.getSource(), id, "NEW_TAB", (panelsLiked));
+					MemeProgramUser.nextTab.actionPerformed(temp);
 				}
 			}
 		}
@@ -170,7 +174,6 @@ public class MemeProgramPanel implements ActionListener {
 		if (panelsLiked == panelsMade){
 			ActionEvent temp = new ActionEvent(e.getSource(), panelsMade, "FINAL_TAB");
 			MemeProgramUser.nextTab.actionPerformed(temp);
-//			panelsLiked++;
 		}
 	}
 
