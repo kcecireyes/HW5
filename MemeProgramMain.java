@@ -29,7 +29,7 @@ public class MemeProgramMain implements ActionListener {
 	private static JTextField userField;
 	private static JTextField passField;
 	private static JButton button;
-	private static int totalMemes = 10;
+	private static int totalMemes = 5;
 	public static ActionListener listener;
 	
 	public static void main(String[] args) {
