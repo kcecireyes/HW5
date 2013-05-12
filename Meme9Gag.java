@@ -113,7 +113,7 @@ public class Meme9Gag extends MemeProgramMeme implements Comparable<MemeProgramM
 					totalVotes = totalVotes + Integer.parseInt(upvote);
 				}
 				if (!upvotes.contains(upvote)) {
-					System.out.println(upvote);
+					//System.out.println(upvote);
 				upvotes.add(upvote);
 				}
 			}
@@ -134,7 +134,7 @@ public class Meme9Gag extends MemeProgramMeme implements Comparable<MemeProgramM
 //		imageURL = "http://d24w6bsrhbeh9d.cloudfront.net/photo/abX9B9O_460s.jpg";
 		
 		imageCallCount = imageCallCount + 1;
-		System.out.println(imageURL);
+	//	System.out.println(imageURL);
 		return imageURL;
 	}
     
