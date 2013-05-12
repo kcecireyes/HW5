@@ -1,9 +1,11 @@
+import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
@@ -27,6 +29,7 @@ public class MemeProgramMain implements ActionListener {
 	private static JTextField userField;
 	private static JTextField passField;
 	private static JButton button;
+	private static int totalMemes = 10;
 	public static ActionListener listener;
 	
 	public static void main(String[] args) {
@@ -57,10 +60,17 @@ public class MemeProgramMain implements ActionListener {
 	public void actionPerformed(ActionEvent arg0) {
 		frame.setVisible(false);
 		if (arg0.getSource() == button) {
-			user = new MemeProgramUser(userField.getText());
+			user = new MemeProgramUser(userField.getText(), totalMemes);
 		} else {
 			frame.dispose();
 			//Here we could display a loading screen very similarly to how we add tabs.
+			frame.setLayout(new BorderLayout());
+			JLabel label = new JLabel("Your Quiz is Loading. Prepare to ");
+			
+			
+			
+			frame.add(label, BorderLayout.NORTH);
+			
 		}
 	}
 }
