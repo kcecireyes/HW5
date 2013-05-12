@@ -18,6 +18,7 @@ public class MemeImgur extends MemeProgramMeme implements Comparable<MemeProgram
 	private String imageURL;
 	private static int count=0;
 	private static int imgcount=0;
+	private static int votecount=0;
 	private static int totalUpvotes=0;
 	private ArrayList<String> imageURLs = new ArrayList<String>();
 	private ArrayList<String> jpgs = new ArrayList<String>();
@@ -66,8 +67,8 @@ public class MemeImgur extends MemeProgramMeme implements Comparable<MemeProgram
 				e.printStackTrace();
 			}
 		}
-		System.out.println("these are names " + imageNames.size() +"\n");
-		System.out.println("these are upvotes ... " + imageVotes.get(1) + " " + imageVotes.get(2) + "\n");	
+		System.out.println("these are names' sizes " + imageNames.size() +"\n");
+		//System.out.println("these are upvotes ... " + imageVotes.get(1) + " " + imageVotes.get(2) + "\n");	
 	}
 
 	@Override
@@ -101,7 +102,6 @@ public class MemeImgur extends MemeProgramMeme implements Comparable<MemeProgram
 
 	@Override
 	public boolean cleanUpvote() {
-
 		for (int i=0; i>imageVotes.size(); i++) {
 			int vote = Integer.parseInt(imageVotes.get(i));
 			totalUpvotes+=vote;
@@ -110,6 +110,16 @@ public class MemeImgur extends MemeProgramMeme implements Comparable<MemeProgram
 			super.upvote = upvotePercent;
 		}
 		return true;
-	}
+	// 	for (int i=0; i>imageVotes.size(); i++) {
+	// 		int tempVote = Integer.parseInt(imageVotes.get(i));
+	// 		totalUpvotes+=tempVote;
+	// 	}
+	// 	int vote = Integer.parseInt(imageVotes.get(votecount));
+	// 	double upvotePercentd = (vote / totalUpvotes) * 100;
+	// 	int upvotePercent = (int) upvotePercentd;
+	// 	super.upvote = upvotePercent;
+	// 	votecount++;
+	// 	return true;
+	 }
 
 }

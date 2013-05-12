@@ -28,6 +28,7 @@ public class Meme9Gag extends MemeProgramMeme implements Comparable<MemeProgramM
 		 */
 		super("http://www.9gag.com/");
     	gag = super.rootElements;
+    	System.out.println("okay the problem is in 9gag, I guess? in the main const");
 
 		imageURL = null;
 	}
@@ -39,7 +40,7 @@ public class Meme9Gag extends MemeProgramMeme implements Comparable<MemeProgramM
 		 */
 		super("http://www.9gag.com/trending");
     	gag = super.rootElements;
-
+System.out.println("okay the problem is in 9gag, I guess? in the weird const");
 		imageURL = null;
 	}
 
@@ -52,7 +53,7 @@ public class Meme9Gag extends MemeProgramMeme implements Comparable<MemeProgramM
     private ArrayList<String> scrapeImages() {
     	
 		
-		
+		System.out.println("okay the problem is in 9gag, I guess? in scrapeImages");
 		Elements jpgs = gag.select("img[src$=.jpg]");
 		for (int i = 0; i<jpgs.size(); i++)  {
 			String jpgURL = jpgs.get(i).absUrl("src");
@@ -75,7 +76,7 @@ public class Meme9Gag extends MemeProgramMeme implements Comparable<MemeProgramM
      */
     private ArrayList<String> scrapeImageNames() {
 			
-		
+		System.out.println("okay the problem is in 9gag, I guess? in scrapeImageNames");
 		Elements names = gag.select("[alt]");
 	
 	//	System.out.println(names.text());
@@ -100,7 +101,7 @@ public class Meme9Gag extends MemeProgramMeme implements Comparable<MemeProgramM
 	private ArrayList<String> scrapeUpvotes() {
 		totalVotes = 0;
 			
-		
+		System.out.println("okay the problem is in 9gag, I guess? in scrapeUpvotes ");
 		Elements votes = gag.select("span");
 	
 		for (int i = 0; i<votes.size(); i++) {
@@ -131,10 +132,8 @@ public class Meme9Gag extends MemeProgramMeme implements Comparable<MemeProgramM
 	public String findImage() {
 		images = scrapeImages();
 		imageURL = images.get(imageCallCount);
-//		imageURL = "http://d24w6bsrhbeh9d.cloudfront.net/photo/abX9B9O_460s.jpg";
 		
 		imageCallCount = imageCallCount + 1;
-	//	System.out.println(imageURL);
 		return imageURL;
 	}
     

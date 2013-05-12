@@ -74,6 +74,7 @@ public abstract class MemeProgramMeme implements Comparable<MemeProgramMeme> {
 		 * @return int the normalized Popularity of the meme
 		 */
 		if (isValidUpvote()) {
+			System.out.println("I am in getUpvote");
 			 return upvote; 
 		}
 		return 0;
@@ -114,8 +115,10 @@ public abstract class MemeProgramMeme implements Comparable<MemeProgramMeme> {
 			System.out.println("these are the upvote percentages of imgur " + this.getUpvote() + "9gag " + o.getUpvote());
 			return 0;
 		} else if(this.getUpvote() < o.getUpvote()) {
+			System.out.println("these are the upvote percentages of imgur " + this.getUpvote() + "9gag " + o.getUpvote());
 			return -1;
 		} else {
+			System.out.println("these are the upvote percentages of imgur " + this.getUpvote() + "9gag " + o.getUpvote());
 			return 1;
 		}
 	}

@@ -61,7 +61,7 @@ public class MemeProgramGUI {
 	
 	public void addTab() {
 		if (pagesDisplayed < quizLength) {
-			System.out.println("Adding a Tab! #" + (pagesDisplayed +1) + "...");
+			System.out.println("Adding a tab no. " + (pagesDisplayed +1) + "...");
 			tabbedPane.addTab(("Page " + (pagesDisplayed + 1) + "!"), icons[pagesDisplayed], panels[pagesDisplayed]);
 			
 			frame.setVisible(false);

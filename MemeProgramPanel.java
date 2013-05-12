@@ -79,40 +79,60 @@ public class MemeProgramPanel implements ActionListener {
 		MemeProgramMeme nineGag = null;
 		
 		while (imgur == null) {
-		    try {
+			try {
 				imgur = new MemeImgur();
-		    } catch (Exception f) {
-		    	System.out.println(f.getMessage());
-		    	imgur = null;
-		    }
+				System.out.println("I am trying to initialize imgur memes");
+			} catch (Exception f) {
+				System.out.println(f.getMessage());
+				//System.out.println("okay what the fuck is wrong?? ");
+				imgur = null;
+			}
 		}
 		while (nineGag == null) {
-		    try {
+			try {
 				nineGag = new Meme9Gag();
-		    } catch (IndexOutOfBoundsException e) {
-			    nineGag = new Meme9Gag(true);
-		    } catch (Exception f) {
-		    	System.out.println(f.getMessage());
+				//System.out.println("I am trying to initialize 9gag memes");
+			} catch (IndexOutOfBoundsException e) {
+				nineGag = new Meme9Gag(true);
+				System.out.println("an error seems to have occurred trying to initialize 9gag memes");
+			} catch (Exception f) {				
+				System.out.println("okay what the fuck is wrong?? 9 ");
+				System.out.println(f.getMessage());
 				nineGag = null;
-		    }
+			}
 		}
 		
+
+
+
+
+
+
+
+
+
+
+
 		if (imgur.compareTo(nineGag) == -1) {
-		    memes[0] = imgur;
-		    memes[1] = nineGag;
+			System.out.println("I am here aaaah! in -1");
+			memes[0] = imgur;
+			memes[1] = nineGag;
 		} else if (imgur.compareTo(nineGag) == 1) {
-		    memes[1] = imgur;
-		    memes[0] = nineGag;
+			System.out.println("I am here aaaah! in 1");
+			memes[1] = imgur;
+			memes[0] = nineGag;
 		} else {
+			System.out.println("I am here aaaah! in else");
 			throw new Exception();
 		}
 		
 		System.out.println(memes[0].toString());
+		System.out.println("is it here, is the problem here??? ");
 		System.out.println(memes[1].toString());
-		
+		System.out.println("is it here, is the problem here??? ");
 	}
-    
-    private void initializeComponents() throws Exception{
+
+	private void initializeComponents() throws Exception{
 		/**
 		 * Sets up the components for each half of the displayed panel.
 		 * @param none
@@ -125,30 +145,30 @@ public class MemeProgramPanel implements ActionListener {
 		JButton[] buttons = new JButton[2];
 		
 		for (int i = 0; i < 2; i++) {
-		    images[i] = memes[i].getImage();
-		    imageNames[i] = memes[i].getImageName();
-		    
-		    System.out.println(images[i].toString());
-		    picLabels[i] = new JLabel(new ImageIcon(images[i]));
-		    
+			images[i] = memes[i].getImage();
+			imageNames[i] = memes[i].getImageName();
+
+			System.out.println(images[i].toString());
+			picLabels[i] = new JLabel(new ImageIcon(images[i]));
+
 		    //I hope this wraps the text!
-		    	labels[i] = new JLabel(String.format("<html><div style=\"width:%dpx;\">%s</div><html>", 500, imageNames[i]));
-		    
-		    labels[i].setFont(new Font(labels[i].getFont().getFontName(), Font.BOLD, 25));
-		    labels[i].revalidate();
-		    
-		    buttons[i] = new JButton("Like!");
-		    buttons[i].addActionListener(this);
-		    buttons[i].setFont(new Font(buttons[i].getFont().getFontName(), Font.BOLD, 25));
-		    buttons[i].revalidate();
-		    
-		    components.set(i, includeComponent(components.get(i), (JComponent)labels[i]));
-		    components.set(i, includeComponent(components.get(i), (JComponent)picLabels[i]));
-		    components.set(i, includeComponent(components.get(i), (JComponent)buttons[i]));
+			labels[i] = new JLabel(String.format("<html><div style=\"width:%dpx;\">%s</div><html>", 500, imageNames[i]));
+
+			labels[i].setFont(new Font(labels[i].getFont().getFontName(), Font.BOLD, 25));
+			labels[i].revalidate();
+
+			buttons[i] = new JButton("Like");
+			buttons[i].addActionListener(this);
+			buttons[i].setFont(new Font(buttons[i].getFont().getFontName(), Font.BOLD, 25));
+			buttons[i].revalidate();
+
+			components.set(i, includeComponent(components.get(i), (JComponent)labels[i]));
+			components.set(i, includeComponent(components.get(i), (JComponent)picLabels[i]));
+			components.set(i, includeComponent(components.get(i), (JComponent)buttons[i]));
 		}
-    }
-    
-    private ArrayList<JComponent> includeComponent (ArrayList<JComponent> list, JComponent comp) {
+	}
+
+	private ArrayList<JComponent> includeComponent (ArrayList<JComponent> list, JComponent comp) {
 		/**
 		 * Takes in an ArrayList<JComponent> and appends a JComponent;
 		 * @param ArrayList<JComponent> list corresponding to a panel's components 
