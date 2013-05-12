@@ -52,12 +52,12 @@ public class MemeImgur extends MemeProgramMeme implements Comparable<MemeProgram
 				imageVotes.add(indivImages.select("div#under-image").select("div.info").select("div.left").select("span:nth-child(1)").text());
 				Element jpgUrl = indivImages.select("div#image").select("img[src$=.jpg]").first();
 				System.out.println("these are the contents of jpgUrl " + jpgUrl);
-				for (int s=0;s<jpgUrl.size();s++) {
-					String jp = jpgUrl.get(s).absUrl("src");
+				//for (int s=0;s<jpgUrl.size();s++) {
+					String jp = jpgUrl.absUrl("src");
 					if (!jp.equals(null)) {
 						jpgs.add(jp);
 					}
-				}
+				//}
 //			}
 //			catch(Exception e){
 //				e.printStackTrace();
