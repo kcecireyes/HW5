@@ -26,8 +26,6 @@ public class MemeProgramPanel implements ActionListener {
 		 * This is the data structure to combine diverse memes into one JPanel.
 		 */
 		thisPanel = panelsMade;
-		panelsMade++;
-		
 		memes = new MemeProgramMeme[2];
 		initializeMemes();
 		
@@ -59,6 +57,8 @@ public class MemeProgramPanel implements ActionListener {
 		}
 		
 		System.out.println("Your newest panel is ready to add to the GUI!");
+		panelsMade++;
+		
 	}
 	
 	public JPanel getPanel() {
@@ -155,6 +155,7 @@ public class MemeProgramPanel implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		//This parses the choice of meme from the latest panel only.
+//		System.out.println("Button Pressed. Processing...");
 		if (thisPanel == panelsLiked){
 			for (int i = 0; i < 2; i++) {
 				if (components.get(i).contains(e.getSource())){
@@ -169,6 +170,7 @@ public class MemeProgramPanel implements ActionListener {
 		if (panelsLiked == panelsMade){
 			ActionEvent temp = new ActionEvent(e.getSource(), panelsMade, "FINAL_TAB");
 			MemeProgramUser.nextTab.actionPerformed(temp);
+//			panelsLiked++;
 		}
 	}
 

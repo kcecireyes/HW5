@@ -41,14 +41,15 @@ public class MemeProgramGUI {
 //			tabbedPane.addTab(("Page " + (i + 1) + "!"), icons[i], panels[i]);
 		}
 		
-		
 		tabbedPane.validate();
 		tabbedPane.doLayout();
 		frame.add(tabbedPane);
 		frame.validate();
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setPreferredSize(new Dimension(1200, 900));
-		frame.setSize(frame.getPreferredSize());
+		
+		frame.setSize(new Dimension(1300, 900));
+		frame.setExtendedState(JFrame.MAXIMIZED_VERT);
+		frame.setPreferredSize(frame.getSize());
 		
 		pagesDisplayed = 0;
 		addTab();
@@ -65,6 +66,7 @@ public class MemeProgramGUI {
 			tabbedPane.revalidate();
 			tabbedPane.doLayout();
 			frame.validate();
+			tabbedPane.setSelectedIndex(pagesDisplayed-1);
 			frame.setVisible(true);
 		}
 	}
@@ -77,6 +79,7 @@ public class MemeProgramGUI {
 		tabbedPane.revalidate();
 		tabbedPane.doLayout();
 		frame.validate();
+		tabbedPane.setSelectedIndex(pagesDisplayed);
 		frame.setVisible(true);
 	}
 	
