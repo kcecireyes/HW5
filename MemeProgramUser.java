@@ -28,9 +28,9 @@ public class MemeProgramUser implements ActionListener{
 	
 	
 	
-	public MemeProgramUser (String userName) {
+	public MemeProgramUser (String userName, int numberOfMemes) {
 		
-		gooey = new MemeProgramGUI(10);
+		gooey = new MemeProgramGUI(numberOfMemes);
 		nextTab = this;
 		
 	}
