@@ -113,7 +113,7 @@ public class Meme9Gag extends MemeProgramMeme implements Comparable<MemeProgramM
 					totalVotes = totalVotes + Integer.parseInt(upvote);
 				}
 				if (!upvotes.contains(upvote)) {
-					System.out.println(upvote);
+					//System.out.println(upvote);
 				upvotes.add(upvote);
 				}
 			}

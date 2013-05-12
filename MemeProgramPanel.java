@@ -131,7 +131,7 @@ public class MemeProgramPanel implements ActionListener {
 		    System.out.println(images[i].toString());
 		    picLabels[i] = new JLabel(new ImageIcon(images[i]));
 		    
-		    
+		    //I hope this wraps the text!
 		    	labels[i] = new JLabel(String.format("<html><div style=\"width:%dpx;\">%s</div><html>", 500, imageNames[i]));
 		    
 		    labels[i].setFont(new Font(labels[i].getFont().getFontName(), Font.BOLD, 25));
