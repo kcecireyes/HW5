@@ -47,11 +47,13 @@ public class MemeImgur extends MemeProgramMeme implements Comparable<MemeProgram
 
 		for (int j=0;j<imageURLs.size();j++) { //goes into the arrayList of image URLs and fetches their content
 			try{
-				Document doc = Jsoup.connect(imageURLs.get(j)).get();
+				Document doc = Jsoup.connect(imageURLs.get(j)).get(); //selects each of the image URLs of the front page and gets the content
 				Elements indivImages = doc.select("div#content").select("div.panel");
-				imageNames.add(indivImages.select("h2").text());
-				imageVotes.add(indivImages.select("div#under-image").select("div.info").select("div.left").select("span:nth-child(1)").text());
 				Element jpgUrl = indivImages.select("div#image").select("img[src$=.jpg]").first();
+				if (jpgUrl!=null){
+					imageNames.add(indivImages.select("h2").text());
+					imageVotes.add(indivImages.select("div#under-image").select("div.info").select("div.left").first().text());
+				}
 				//System.out.println("these are the contents of jpgUrl " + jpgUrl);
 				if ((jpgUrl != null) && (jpgUrl.absUrl("src")!=null)) {
 					String jp = jpgUrl.absUrl("src");
@@ -65,7 +67,7 @@ public class MemeImgur extends MemeProgramMeme implements Comparable<MemeProgram
 			}
 		}
 		System.out.println("these are names " + imageNames.size() +"\n");
-		//System.out.println("these are jpg addresses ... " + jpgUrl +"\n");	
+		System.out.println("these are upvotes ... " + imageVotes.get(1) + " " + imageVotes.get(2) + "\n");	
 	}
 
 	@Override
