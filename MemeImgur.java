@@ -51,8 +51,8 @@ public class MemeImgur extends MemeProgramMeme implements Comparable<MemeProgram
 				imageNames.add(indivImages.select("h2").text());
 				imageVotes.add(indivImages.select("div#under-image").select("div.info").select("div.left").select("span:nth-child(1)").text());
 				Element jpgUrl = indivImages.select("div#image").select("img[src$=.jpg]").first();
-				System.out.println("these are the contents of jpgUrl " + jpgUrl);
-				if (jpgUrl != null) {
+				//System.out.println("these are the contents of jpgUrl " + jpgUrl);
+				if ((jpgUrl != null) && (jpgUrl.absUrl("src")!=null)) {
 					String jp = jpgUrl.absUrl("src");
 					if (!jp.equals(null)) {
 						jpgs.add(jp);
