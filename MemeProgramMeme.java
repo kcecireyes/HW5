@@ -111,6 +111,7 @@ public abstract class MemeProgramMeme implements Comparable<MemeProgramMeme> {
 		 * @return int 0 if equal, -1 if this<that, 1 if this>that.
 		 */
 		if (this.getUpvote() == o.getUpvote()){
+			System.out.println("these are the upvote percentages of imgur " + this.getUpvote() + "9gag " + o.getUpvote());
 			return 0;
 		} else if(this.getUpvote() < o.getUpvote()) {
 			return -1;
