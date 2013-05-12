@@ -147,7 +147,7 @@ public abstract class MemeProgramMeme implements Comparable<MemeProgramMeme> {
 		 * @return boolean It's true if the resizing process is successful.
 		 */
 		try {
-			image = image.getScaledInstance(550, -1, 0);
+			image = image.getScaledInstance(700, -1, 0);
 		} catch (Exception e) {
 			return false;
 		} 

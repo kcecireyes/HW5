@@ -21,13 +21,13 @@ public class MemeProgramMain implements ActionListener {
 	 * @param args (Currently requires no command line arguments)
 	 */
 	
-	static MemeProgramUser[] users = new MemeProgramUser[1];
-	static JFrame frame;
-	static JPanel pane;
-	static JTextField userField;
-	static JTextField passField;
-	static JButton button;
-	static ActionListener listener;
+	private static MemeProgramUser user;
+	private static JFrame frame;
+	private static JPanel pane;
+	private static JTextField userField;
+	private static JTextField passField;
+	private static JButton button;
+	public static ActionListener listener;
 	
 	public static void main(String[] args) {
 		frame = new JFrame("The Best Meme-Scraping App Ever!");
@@ -36,9 +36,9 @@ public class MemeProgramMain implements ActionListener {
 		pane = new JPanel();
 		pane.setLayout(new BoxLayout(pane, BoxLayout.PAGE_AXIS));
 		
-		userField = new JTextField("Enter your Username here.");
+		userField = new JTextField("Username");
 		pane.add(userField);
-		passField = new JTextField("Enter your Password here.");
+		passField = new JTextField("Password");
 		pane.add(passField);
 		button = new JButton("Submit");
 		listener = new MemeProgramMain();
@@ -49,15 +49,18 @@ public class MemeProgramMain implements ActionListener {
 		pane.doLayout();
 		frame.add(pane);
 		
-		frame.setSize(400, 300);
+		frame.setSize(500, 300);
 		frame.setVisible(true);
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		frame.setVisible(false);
-		for (MemeProgramUser i : users){
-			i = new MemeProgramUser(userField.getText());
+		if (arg0.getSource() == button) {
+			user = new MemeProgramUser(userField.getText());
+		} else {
+			frame.dispose();
+			//Here we could display a loading screen very similarly to how we add tabs.
 		}
 	}
 }

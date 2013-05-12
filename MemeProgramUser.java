@@ -1,3 +1,4 @@
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -66,6 +67,7 @@ public class MemeProgramUser implements ActionListener{
 		} else if (arg0.getActionCommand() == "FINAL_TAB") {
 			JPanel last = new JPanel();
 			JLabel preferenceResult = new JLabel();
+			preferenceResult.setFont(new Font(preferenceResult.getFont().getFontName(), Font.ITALIC, 25));
 			//TODO Make a JPanel with all of the stuff you want on the last page!
 				
 				if (lessPopular>morePopular) {

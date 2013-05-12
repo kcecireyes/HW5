@@ -47,8 +47,8 @@ public class MemeProgramGUI {
 		frame.validate();
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
-		frame.setSize(new Dimension(1300, 900));
-		frame.setExtendedState(JFrame.MAXIMIZED_VERT);
+		frame.setSize(new Dimension(1500, 1000));
+		
 		frame.setPreferredSize(frame.getSize());
 		
 		pagesDisplayed = 0;
@@ -60,14 +60,16 @@ public class MemeProgramGUI {
 		if (pagesDisplayed < quizLength) {
 			System.out.println("Adding a Tab! #" + (pagesDisplayed +1) + "...");
 			tabbedPane.addTab(("Page " + (pagesDisplayed + 1) + "!"), icons[pagesDisplayed], panels[pagesDisplayed]);
-			pagesDisplayed++;
 			
 			frame.setVisible(false);
 			tabbedPane.revalidate();
 			tabbedPane.doLayout();
 			frame.validate();
-			tabbedPane.setSelectedIndex(pagesDisplayed-1);
+			
+			tabbedPane.setSelectedIndex(pagesDisplayed);
 			frame.setVisible(true);
+			pagesDisplayed++;
+			
 		}
 	}
 	
