@@ -71,18 +71,18 @@ public class MemeProgramUser implements ActionListener{
 			//TODO Make a JPanel with all of the stuff you want on the last page!
 				
 				if (lessPopular>morePopular) {
-					preferenceResult.setText("Congrats! You are a nonconformist, hipster snob.\n" +
-							"Out of 10 memes, you chose " + lessPopular + " that were of lesser popularity.");
+					preferenceResult.setText(String.format("<html><div style=\"width:%dpx;\">%s</div><html>", 550, "Congrats! You are a nonconformist, hipster snob.\n" + "<\br>" +
+							"Out of 10 memes, you chose " + lessPopular + " that were of lesser popularity."));
 				}
 				
 				else if (morePopular > lessPopular) {
-					preferenceResult.setText("Congrats! You are a sheep.\n" +
-							"Out of 10 memes, you chose " + morePopular + " that were of greater popularity.");
+					preferenceResult.setText(String.format("<html><div style=\"width:%dpx;\">%s</div><html>", 550, "< \br >" + "Congrats! You are a sheep. " + "<\br>"+
+							"Out of 10 memes, you chose " + morePopular + " that were of greater popularity."));
 				}
 				
 				else {
-					preferenceResult.setText("Congrats. You probably don't have a personality. \n" +
-							"You chose an equal number of memes that were popular and as you did ones that were less popular. ");
+					preferenceResult.setText(String.format("<html><div style=\"width:%dpx;\">%s</div><html>", 550, "Congrats. You probably don't have a personality." + "<\br>"+
+							"You chose an equal number of memes that were popular and as you did ones that were less popular. "));
 				}
 			
 			last.add(preferenceResult);

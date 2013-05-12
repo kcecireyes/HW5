@@ -57,6 +57,7 @@ public class Meme9Gag extends MemeProgramMeme implements Comparable<MemeProgramM
 		for (int i = 0; i<jpgs.size(); i++)  {
 			String jpgURL = jpgs.get(i).absUrl("src");
 			if (!jpgURL.contains("_tp_") && !images.contains(jpgURL)) {
+				System.out.println(jpgURL);
 				images.add(jpgURL);
 			}
 		//	System.out.println(testurl);
@@ -81,6 +82,7 @@ public class Meme9Gag extends MemeProgramMeme implements Comparable<MemeProgramM
 		for (int i = 3; i<names.size()-3; i= i+3) {
 			String name = names.get(i).attr("alt");
 			if (!imageNames.contains(name)) {
+				System.out.println(name);
 			imageNames.add(name);
 			//System.out.println(name);
 			}
@@ -111,7 +113,7 @@ public class Meme9Gag extends MemeProgramMeme implements Comparable<MemeProgramM
 					totalVotes = totalVotes + Integer.parseInt(upvote);
 				}
 				if (!upvotes.contains(upvote)) {
-
+					System.out.println(upvote);
 				upvotes.add(upvote);
 				}
 			}
