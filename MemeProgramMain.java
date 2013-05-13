@@ -2,7 +2,11 @@ import java.awt.BorderLayout;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.IOException;
 
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
@@ -25,7 +29,9 @@ public class MemeProgramMain implements ActionListener {
 	private static JFrame frame = new JFrame("Your Quiz is Loading...");
 	private static JLabel label = new JLabel("Prepare to find out how mainstream your memes are!");
 	private static JLabel count = new JLabel(loadedMemes + "/" + totalMemes);
-	public static final ActionListener listener = new MemeProgramMain();
+	private static JLabel picLabel;
+	private static JLabel picLabel2;
+	public static ActionListener listener = new MemeProgramMain();
 	
 //	private static JPanel pane;
 //	private static JTextField userField;
@@ -33,21 +39,29 @@ public class MemeProgramMain implements ActionListener {
 //	private static JButton button;
 	
 	public static void main(String[] args) {
-		
-		user = new MemeProgramUser("Now Arbitrary *and* capricious!", totalMemes);
-		
 		frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
-		frame.setSize(600, 600);
 		frame.setLayout(new BorderLayout());
 		
-		label.setFont(new Font(label.getFont().getFontName(), Font.BOLD, 25));
+		try {
+			picLabel = new JLabel(new ImageIcon(ImageIO.read(new File("icon0.jpg")).getScaledInstance(200, 200, 0)));
+			frame.add(picLabel, BorderLayout.EAST);
+			picLabel2 = new JLabel(new ImageIcon(ImageIO.read(new File("icon0.jpg")).getScaledInstance(200, 200, 0)));
+			frame.add(picLabel2, BorderLayout.WEST);
+		} catch (IOException e) {
+			//Do nothing. Really, just give it up.
+		}
 		
-		count.setFont(new Font(count.getFont().getFontName(), Font.BOLD, 100));
+		label.setFont(new Font(label.getFont().getFontName(), Font.BOLD, 50));
+		count.setFont(new Font(count.getFont().getFontName(), Font.BOLD, 400));
 		frame.add(label, BorderLayout.NORTH);
 		frame.add(count, BorderLayout.CENTER);
+		
+		frame.setSize(1300, 800);
 		frame.doLayout();
 		frame.validate();
 		frame.setVisible(true);
+		
+		user = new MemeProgramUser("Now Arbitrary *and* capricious!", totalMemes);	
 		
 //		pane = new JPanel();
 //		pane.setLayout(new BoxLayout(pane, BoxLayout.PAGE_AXIS));
@@ -69,10 +83,12 @@ public class MemeProgramMain implements ActionListener {
 		 * This will update the loading screen whenever it is called.
 		 * @param ActionEvent arg0 (Currently requires nothing special.)
 		 */
-//		frame.setVisible(false);
 		loadedMemes++;
 		count.setText(loadedMemes + "/" + totalMemes);
 		frame.validate();
-		frame.setVisible(true);
+		if (loadedMemes == totalMemes) {
+			frame.dispose();
+		}
+		
 	}
 }
