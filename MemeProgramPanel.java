@@ -189,14 +189,14 @@ public class MemeProgramPanel implements ActionListener {
 					int id = i;
 					panelsLiked++;
 					ActionEvent temp = new ActionEvent(e.getSource(), id, "NEW_TAB", (panelsLiked));
-					MemeProgramUser.nextTab.actionPerformed(temp);
+					MemeProgramUser.userListener.actionPerformed(temp);
 				}
 			}
 		}
 		//Now this will tell it what to do at the very last panel.
 		if (panelsLiked == panelsMade){
 			ActionEvent temp = new ActionEvent(e.getSource(), panelsMade, "FINAL_TAB");
-			MemeProgramUser.nextTab.actionPerformed(temp);
+			MemeProgramUser.userListener.actionPerformed(temp);
 		}
 	}
 
