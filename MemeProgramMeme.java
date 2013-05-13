@@ -112,13 +112,13 @@ public abstract class MemeProgramMeme implements Comparable<MemeProgramMeme> {
 		 * @return int 0 if equal, -1 if this<that, 1 if this>that.
 		 */
 		if (getUpvote() == o.getUpvote()){
-			System.out.println("these are the upvote percentages of imgur " + getUpvote() + "9gag " + o.getUpvote());
+//			System.out.println("these are the upvote percentages of imgur " + getUpvote() + "9gag " + o.getUpvote());
 			return 0;
 		} else if(getUpvote() < o.getUpvote()) {
-			System.out.println("these are the upvote percentages of imgur " + getUpvote() + "9gag " + o.getUpvote());
+//			System.out.println("these are the upvote percentages of imgur " + getUpvote() + "9gag " + o.getUpvote());
 			return -1;
 		} else {
-			System.out.println("these are the upvote percentages of imgur " + getUpvote() + "9gag " + o.getUpvote());
+//			System.out.println("these are the upvote percentages of imgur " + getUpvote() + "9gag " + o.getUpvote());
 			return 1;
 		}
 	}

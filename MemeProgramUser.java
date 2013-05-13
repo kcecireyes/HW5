@@ -85,6 +85,8 @@ public class MemeProgramUser implements ActionListener{
 				try {
 					JLabel challenge3 = new JLabel(new ImageIcon(ImageIO.read(new File("icon3.jpg"))));
 					last.add(challenge3);
+					JLabel challenge4 = new JLabel(new ImageIcon(ImageIO.read(new File("icon6.jpg"))));
+					last.add(challenge4);
 				} catch (IOException e) {
 					//Do nothing. Really, just give it up.
 				}

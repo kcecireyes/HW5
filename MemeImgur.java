@@ -125,11 +125,13 @@ public class MemeImgur extends MemeProgramMeme implements Comparable<MemeProgram
 		}
 		
 		for (int i=0; i < MemeProgramMain.totalMemes; i++) {
-			//TODO this sets the upvote of every meme to the last scaled upvote value..
-			double vote = imageVotes.get(i);
-			double upvotePercentd = (vote / (double)totalUpvotes) * 100.0;
-			int upvotePercent = (int) upvotePercentd;
-			super.upvote = upvotePercent;
+			if (i == imgcount) {
+				//TODO this sets the upvote of every meme to the last scaled upvote value..
+				double vote = imageVotes.get(i);
+				double upvotePercentd = (vote / (double) totalUpvotes) * 100.0;
+				int upvotePercent = (int) upvotePercentd;
+				super.upvote = upvotePercent;
+			}
 		}
 		
 		return true;
