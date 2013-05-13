@@ -1,4 +1,5 @@
 import java.awt.BorderLayout;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -12,65 +13,75 @@ import javax.swing.JTextField;
 /**
  * The main program of the meme-related program we're doing for HW5. 
  * @author Cecilia, Alice, Lowell
- * @version 5/4 2:00
+ * @version 5/13 1:00
  */
 
 public class MemeProgramMain implements ActionListener {
 	/**
-	 * Alice's Comment is better than your comment. No. Not really. Yours are also nice.
 	 * Begins the locally-run version of our meme-related application!
-	 * Creates an array of users, and initializes the first user. 
+	 * Creates a MemeProgramUser and initializes the first arbitrary user. 
 	 * @param args (Currently requires no command line arguments)
 	 */
 	
 	private static MemeProgramUser user;
 	private static JFrame frame;
+	private static JLabel label;
+	private static JLabel count;
+	private static int loadedMemes = 0;
+	private static final int totalMemes = 10;
+	public static ActionListener listener;
+	
 	private static JPanel pane;
 	private static JTextField userField;
 	private static JTextField passField;
 	private static JButton button;
-	private static int totalMemes = 5;
-	public static ActionListener listener;
 	
 	public static void main(String[] args) {
-		frame = new JFrame("The Best Meme-Scraping App Ever!");
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
-		pane = new JPanel();
-		pane.setLayout(new BoxLayout(pane, BoxLayout.PAGE_AXIS));
+		user = new MemeProgramUser("Now Arbitrary *and* capricious!", totalMemes);
 		
-		userField = new JTextField("Username");
-		pane.add(userField);
-		passField = new JTextField("Password");
-		pane.add(passField);
-		button = new JButton("Submit");
 		listener = new MemeProgramMain();
-		button.addActionListener(listener);
-		pane.add(button);
 		
-		pane.validate();
-		pane.doLayout();
-		frame.add(pane);
+		frame = new JFrame("Your Quiz is Loading...");
+		frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+		frame.setSize(600, 600);
 		
-		frame.setSize(500, 300);
+		frame.setVisible(false);
+		frame.setLayout(new BorderLayout());
+		label = new JLabel("Prepare to find out how mainstream your memes are!");
+		label.setFont(new Font(label.getFont().getFontName(), Font.BOLD, 25));
+		count = new JLabel(loadedMemes + "/" + totalMemes);
+		count.setFont(new Font(count.getFont().getFontName(), Font.BOLD, 100));
+		frame.add(label, BorderLayout.NORTH);
+		frame.add(count, BorderLayout.CENTER);
+		frame.doLayout();
+		frame.validate();
 		frame.setVisible(true);
+		
+//		pane = new JPanel();
+//		pane.setLayout(new BoxLayout(pane, BoxLayout.PAGE_AXIS));
+//		userField = new JTextField("Username");
+//		pane.add(userField);
+//		passField = new JTextField("Password");
+//		pane.add(passField);
+//		button = new JButton("Submit");
+//		button.addActionListener(listener);
+//		pane.add(button);
+//		pane.validate();
+//		pane.doLayout();
+//		frame.add(pane);
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
+		/**
+		 * This will update the loading screen whenever it is called.
+		 * @param ActionEvent arg0 (Currently requires nothing special.)
+		 */
 		frame.setVisible(false);
-		if (arg0.getSource() == button) {
-			user = new MemeProgramUser(userField.getText(), totalMemes);
-		} else {
-			frame.dispose();
-			//Here we could display a loading screen very similarly to how we add tabs.
-			frame.setLayout(new BorderLayout());
-			JLabel label = new JLabel("Your Quiz is Loading. Prepare to ");
-			
-			
-			
-			frame.add(label, BorderLayout.NORTH);
-			
-		}
+		loadedMemes++;
+		count.setText(loadedMemes + "/" + totalMemes);
+		frame.validate();
+		frame.setVisible(true);
 	}
 }

@@ -58,6 +58,7 @@ public class MemeProgramPanel implements ActionListener {
 		}
 		
 		System.out.println("Your newest panel is ready to add to the GUI!");
+		MemeProgramMain.listener.actionPerformed(new ActionEvent(this, panelsMade, "Panel: " + panelsMade + " Loaded"));
 		panelsMade++;
 		
 	}
