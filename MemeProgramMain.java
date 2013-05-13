@@ -31,10 +31,10 @@ public class MemeProgramMain implements ActionListener {
 	private static final int totalMemes = 10;
 	public static ActionListener listener;
 	
-	private static JPanel pane;
-	private static JTextField userField;
-	private static JTextField passField;
-	private static JButton button;
+//	private static JPanel pane;
+//	private static JTextField userField;
+//	private static JTextField passField;
+//	private static JButton button;
 	
 	public static void main(String[] args) {
 		
