@@ -57,27 +57,41 @@ public class MemeProgramUser implements ActionListener{
 			JPanel last = new JPanel();
 			last.setLayout(new BoxLayout(last, BoxLayout.PAGE_AXIS));
 			
-			JLabel preferenceResult = new JLabel();
+			JLabel preferenceResult = new JLabel("");
+			last.add(preferenceResult);
 			preferenceResult.setFont(new Font(preferenceResult.getFont().getFontName(), Font.BOLD, 45));
-			if (lessPopular>morePopular) {
+			
+			if (lessPopular > morePopular) {
 				preferenceResult.setText(String.format("<html><div style=\"width:%dpx;\">%s</div><html>", 900, "Congrats! \n You are a nonconformist, hipster snob.\n" +"<\b" +
 						" Out of "+ MemeProgramMain.totalMemes +" memes, you chose " + lessPopular + " that were of lesser popularity."));
+				try {
+					JLabel challenge = new JLabel(new ImageIcon(ImageIO.read(new File("icon4.jpg"))));
+					last.add(challenge);
+				} catch (IOException e) {
+					//Do nothing. Really, just give it up.
+				}
 			} else if (morePopular > lessPopular) {
 				preferenceResult.setText(String.format("<html><div style=\"width:%dpx;\">%s</div><html>", 900, "< \b" + "Congrats! \n You are actually a sheep.\n" + "<\b"+
 						" Out of "+ MemeProgramMain.totalMemes +" memes, you chose " + morePopular + " that were of greater popularity."));
+				try {
+					JLabel challenge2 = new JLabel(new ImageIcon(ImageIO.read(new File("icon5.jpg"))));
+					last.add(challenge2);
+				} catch (IOException e) {
+					//Do nothing. Really, just give it up.
+				}
 			} else {
 				preferenceResult.setText(String.format("<html><div style=\"width:%dpx;\">%s</div><html>", 900, "Congrats. \n You probably don't have a personality.\n"+"<\b" +
 						" You chose an equal number of memes that were popular and as you did ones that were less popular. "));
-			}
-			last.add(preferenceResult);
-			
-			try {
-				JLabel challenge = new JLabel(new ImageIcon(ImageIO.read(new File("icon3.jpg"))));
-				last.add(challenge);
-			} catch (IOException e) {
-				//Do nothing. Really, just give it up.
+				try {
+					JLabel challenge3 = new JLabel(new ImageIcon(ImageIO.read(new File("icon3.jpg"))));
+					last.add(challenge3);
+				} catch (IOException e) {
+					//Do nothing. Really, just give it up.
+				}
 			}
 			
+			last.doLayout();
+			last.validate();
 			gooey.addFinalTab(last);
 			
 		}
