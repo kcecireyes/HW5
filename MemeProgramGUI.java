@@ -40,7 +40,7 @@ public class MemeProgramGUI {
 					memePanels[i] = memePanels[i-1];
 					quizLength--;
 				} catch (Exception e) {
-					e.printStackTrace();
+					System.out.println(e.getMessage());
 				} 
 			}
 			panels[i] = memePanels[i].getPanel();

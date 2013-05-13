@@ -1,4 +1,3 @@
-import java.awt.BorderLayout;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -45,8 +44,6 @@ public class MemeProgramUser implements ActionListener{
 			gooey.addTab();
 			int panel = arg0.getModifiers();
 			int choice = arg0.getID();
-			System.out.println("This is the meme that was chosen!: " + choice);
-			System.out.println("This is the panel it was chosen on!: " + panel);
 			if (choice == 0) {
 				lessPopular++;
 			} else {
@@ -85,6 +82,8 @@ public class MemeProgramUser implements ActionListener{
 				try {
 					JLabel challenge3 = new JLabel(new ImageIcon(ImageIO.read(new File("icon3.jpg"))));
 					last.add(challenge3);
+					JLabel challenge4 = new JLabel(new ImageIcon(ImageIO.read(new File("icon6.jpg")).getScaledInstance(400, 400, 0)));
+					last.add(challenge4);
 				} catch (IOException e) {
 					//Do nothing. Really, just give it up.
 				}

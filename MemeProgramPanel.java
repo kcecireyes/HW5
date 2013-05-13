@@ -109,19 +109,15 @@ public class MemeProgramPanel implements ActionListener {
 		}
 
 		if (imgur.compareTo(nineGag) == -1) {
-//			System.out.println("I am here aaaah! in -1");
 			memes[0] = imgur;
 			memes[1] = nineGag;
 		} else if (imgur.compareTo(nineGag) == 1) {
-//			System.out.println("I am here aaaah! in 1");
 			memes[1] = imgur;
 			memes[0] = nineGag;
 		} else {
-//			System.out.println("I am here aaaah! in else");
 			throw new Exception();
 		}
 		
-		System.out.println("Memes successfully initialized for your newest Panel!");
 	}
 
 	private void initializeComponents() throws Exception{
