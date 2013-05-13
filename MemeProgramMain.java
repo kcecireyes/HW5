@@ -43,16 +43,16 @@ public class MemeProgramMain implements ActionListener {
 		frame.setLayout(new BorderLayout());
 		
 		try {
-			picLabel = new JLabel(new ImageIcon(ImageIO.read(new File("icon0.jpg")).getScaledInstance(200, 200, 0)));
+			picLabel = new JLabel(new ImageIcon(ImageIO.read(new File("icon2.jpg"))));
 			frame.add(picLabel, BorderLayout.EAST);
-			picLabel2 = new JLabel(new ImageIcon(ImageIO.read(new File("icon0.jpg")).getScaledInstance(200, 200, 0)));
+			picLabel2 = new JLabel(new ImageIcon(ImageIO.read(new File("icon1.jpg"))));
 			frame.add(picLabel2, BorderLayout.WEST);
 		} catch (IOException e) {
 			//Do nothing. Really, just give it up.
 		}
 		
 		label.setFont(new Font(label.getFont().getFontName(), Font.BOLD, 50));
-		count.setFont(new Font(count.getFont().getFontName(), Font.BOLD, 400));
+		count.setFont(new Font(count.getFont().getFontName(), Font.BOLD, 420));
 		frame.add(label, BorderLayout.NORTH);
 		frame.add(count, BorderLayout.CENTER);
 		
