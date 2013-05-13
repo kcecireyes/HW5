@@ -17,10 +17,12 @@ public class MemeImgur extends MemeProgramMeme implements Comparable<MemeProgram
 	private final static String website = "http://www.imgur.com/";
 	private String imageURL;
 	private static int count=0;
-	private static int imgcount=0;
-	private static int votecount=0;
 	private static int totalUpvotes=0;
+	private static int imgcount=0;
+	
+//	private static int votecount=0;
 //	private ArrayList<String> imageURLs = new ArrayList<String>();
+	
 	private ArrayList<String> jpgs = new ArrayList<String>();
 	private ArrayList<String> imageNames = new ArrayList<String>();
 	private ArrayList<Integer> imageVotes = new ArrayList<Integer>(); 
@@ -85,14 +87,13 @@ public class MemeImgur extends MemeProgramMeme implements Comparable<MemeProgram
 //				}
 //		}
     	
-		System.out.println("these are names' sizes " + imageNames.size() +"\n");
-		//System.out.println("these are upvotes ... " + imageVotes.get(1) + " " + imageVotes.get(2) + "\n");	
+//		System.out.println("these are names' sizes " + imageNames.size() +"\n");
+//		System.out.println("these are upvotes ... " + imageVotes.get(1) + " " + imageVotes.get(2) + "\n");	
 	}
 
 	@Override
 	public String findImage() {
 		while (imageURL == null) {	
-			//TODO FIND the clean, complete link to the meme image in a procedural way.
 			imageURL=jpgs.get(count);
 		}
 		imgcount++;
@@ -101,13 +102,11 @@ public class MemeImgur extends MemeProgramMeme implements Comparable<MemeProgram
 	
 	@Override
 	public boolean findImageName() {
-		// TODO Auto-generated method stub
 		return true;
 	}
 
 	@Override
 	public boolean cleanImageName() {
-		// TODO Auto-generated method stub
 		super.imageName = imageNames.get(count);
 		count++;
 		return true;
@@ -120,14 +119,20 @@ public class MemeImgur extends MemeProgramMeme implements Comparable<MemeProgram
 
 	@Override
 	public boolean cleanUpvote() {
-		for (int i=0; i>imageVotes.size(); i++) {
+		for (int i=0; i < MemeProgramMain.totalMemes; i++) {
 //			int vote = Integer.parseInt(imageVotes.get(i));
 			int vote = imageVotes.get(i);
-			totalUpvotes+=vote;
-			double upvotePercentd = (vote / totalUpvotes) * 100;
-			int upvotePercent = (int)upvotePercentd;
+			totalUpvotes += vote;
+		}
+		
+		for (int i=0; i < MemeProgramMain.totalMemes; i++) {
+			//TODO this sets the upvote of every meme to the last scaled upvote value..
+			double vote = imageVotes.get(i);
+			double upvotePercentd = (vote / (double)totalUpvotes) * 100.0;
+			int upvotePercent = (int) upvotePercentd;
 			super.upvote = upvotePercent;
 		}
+		
 		return true;
 		
 	// 	for (int i=0; i>imageVotes.size(); i++) {

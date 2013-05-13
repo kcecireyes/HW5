@@ -28,7 +28,7 @@ public class Meme9Gag extends MemeProgramMeme implements Comparable<MemeProgramM
 		 */
 		super("http://www.9gag.com/");
     	gag = super.rootElements;
-    	System.out.println("okay the problem is in 9gag, I guess? in the main const");
+//    	System.out.println("okay the problem is in 9gag, I guess? in the main const");
 
 		imageURL = null;
 	}
@@ -40,7 +40,7 @@ public class Meme9Gag extends MemeProgramMeme implements Comparable<MemeProgramM
 		 */
 		super("http://www.9gag.com/trending");
     	gag = super.rootElements;
-System.out.println("okay the problem is in 9gag, I guess? in the weird const");
+//    	System.out.println("okay the problem is in 9gag, I guess? in the weird const");		
 		imageURL = null;
 	}
 
@@ -52,20 +52,18 @@ System.out.println("okay the problem is in 9gag, I guess? in the weird const");
     
     private ArrayList<String> scrapeImages() {
     	
-		
-		System.out.println("okay the problem is in 9gag, I guess? in scrapeImages");
+//		System.out.println("okay the problem is in 9gag, I guess? in scrapeImages");
 		Elements jpgs = gag.select("img[src$=.jpg]");
 		for (int i = 0; i<jpgs.size(); i++)  {
 			String jpgURL = jpgs.get(i).absUrl("src");
 			if (!jpgURL.contains("_tp_") && !images.contains(jpgURL)) {
-				System.out.println(jpgURL);
+//				System.out.println(jpgURL);
 				images.add(jpgURL);
 			}
-		//	System.out.println(testurl);
+//			System.out.println(testurl);
 		}
-		
-	
 		return images;
+		
     }
     
     /**
@@ -76,16 +74,15 @@ System.out.println("okay the problem is in 9gag, I guess? in the weird const");
      */
     private ArrayList<String> scrapeImageNames() {
 			
-		System.out.println("okay the problem is in 9gag, I guess? in scrapeImageNames");
+//		System.out.println("okay the problem is in 9gag, I guess? in scrapeImageNames");
 		Elements names = gag.select("[alt]");
 	
-	//	System.out.println(names.text());
+//		System.out.println(names.text());
 		for (int i = 3; i<names.size()-3; i= i+3) {
 			String name = names.get(i).attr("alt");
 			if (!imageNames.contains(name)) {
-				System.out.println(name);
-			imageNames.add(name);
-			//System.out.println(name);
+//				System.out.println(name);
+				imageNames.add(name);
 			}
 		}
 		
@@ -100,8 +97,7 @@ System.out.println("okay the problem is in 9gag, I guess? in the weird const");
     
 	private ArrayList<String> scrapeUpvotes() {
 		totalVotes = 0;
-			
-		System.out.println("okay the problem is in 9gag, I guess? in scrapeUpvotes ");
+//		System.out.println("okay the problem is in 9gag, I guess? in scrapeUpvotes ");
 		Elements votes = gag.select("span");
 	
 		for (int i = 0; i<votes.size(); i++) {
@@ -114,8 +110,8 @@ System.out.println("okay the problem is in 9gag, I guess? in the weird const");
 					totalVotes = totalVotes + Integer.parseInt(upvote);
 				}
 				if (!upvotes.contains(upvote)) {
-					//System.out.println(upvote);
-				upvotes.add(upvote);
+//					System.out.println(upvote);
+					upvotes.add(upvote);
 				}
 			}
 		}
@@ -137,8 +133,8 @@ System.out.println("okay the problem is in 9gag, I guess? in the weird const");
 		return imageURL;
 	}
     
-    /**This method doesn't do jack.
-     * 
+    /**
+     * This method doesn't do jack.
      */
 	@Override
 	public boolean findImageName() {
@@ -161,6 +157,7 @@ System.out.println("okay the problem is in 9gag, I guess? in the weird const");
 		imageNameCallCount++;
 		return true;
 	}
+	
 	/**
 	 * This method doesn't do jack.
 	 */
@@ -169,11 +166,12 @@ System.out.println("okay the problem is in 9gag, I guess? in the weird const");
 		// TODO Auto-generated method stub Interior crocodile alligator, I drive a chevrolet movie theater.
 		return true;
 	}
-/**
- * This method takes the upvotes for a particular meme in the ArrayList
- * at the call count and divides it by the totalVotes. This value is multiplied
- * by 100 to get the percent which is sent to the super.
- */
+	
+	/**
+	 * This method takes the upvotes for a particular meme in the ArrayList
+	 * at the call count and divides it by the totalVotes. This value is multiplied
+	 * by 100 to get the percent which is sent to the super.
+	 */
 	@Override
 	public boolean cleanUpvote() {
 		// TODO Auto-generated method stub

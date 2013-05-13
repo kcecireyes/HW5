@@ -16,8 +16,8 @@ import org.jsoup.select.Elements;
 public abstract class MemeProgramMeme implements Comparable<MemeProgramMeme> {
 	
 	protected final String rootWebsite;
-	protected Document rootDoc;
-	protected Elements rootElements;
+	protected final Document rootDoc;
+	protected final Elements rootElements;
 	protected URL url;
 	
 	protected Image image;
@@ -74,8 +74,8 @@ public abstract class MemeProgramMeme implements Comparable<MemeProgramMeme> {
 		 * @return int the normalized Popularity of the meme
 		 */
 		if (isValidUpvote()) {
-			System.out.println("I am in getUpvote");
-			 return upvote; 
+//			System.out.println("I am in getUpvote");
+			return upvote; 
 		}
 		return 0;
 	}
@@ -111,14 +111,14 @@ public abstract class MemeProgramMeme implements Comparable<MemeProgramMeme> {
 		 * @param MemeProgramMeme o Another meme to compare this to!
 		 * @return int 0 if equal, -1 if this<that, 1 if this>that.
 		 */
-		if (this.getUpvote() == o.getUpvote()){
-			System.out.println("these are the upvote percentages of imgur " + this.getUpvote() + "9gag " + o.getUpvote());
+		if (getUpvote() == o.getUpvote()){
+			System.out.println("these are the upvote percentages of imgur " + getUpvote() + "9gag " + o.getUpvote());
 			return 0;
-		} else if(this.getUpvote() < o.getUpvote()) {
-			System.out.println("these are the upvote percentages of imgur " + this.getUpvote() + "9gag " + o.getUpvote());
+		} else if(getUpvote() < o.getUpvote()) {
+			System.out.println("these are the upvote percentages of imgur " + getUpvote() + "9gag " + o.getUpvote());
 			return -1;
 		} else {
-			System.out.println("these are the upvote percentages of imgur " + this.getUpvote() + "9gag " + o.getUpvote());
+			System.out.println("these are the upvote percentages of imgur " + getUpvote() + "9gag " + o.getUpvote());
 			return 1;
 		}
 	}
