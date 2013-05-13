@@ -26,6 +26,7 @@ public class MemeProgramGUI {
 		quizLength = length;
 		frame = new JFrame("The Best Meme-Scraping App Ever!");
 		tabbedPane = new JTabbedPane(JTabbedPane.NORTH, JTabbedPane.SCROLL_TAB_LAYOUT);
+		tabbedPane.setAutoscrolls(true);
 		
 		panels = new JComponent[quizLength];
 		memePanels = new MemeProgramPanel[quizLength];
@@ -39,12 +40,11 @@ public class MemeProgramGUI {
 					memePanels[i] = memePanels[i-1];
 					quizLength--;
 				} catch (Exception e) {
-					System.out.println(e.getMessage());
+					e.printStackTrace();
 				} 
 			}
 			panels[i] = memePanels[i].getPanel();
 			icons[i] = new ImageIcon("icon0.jpg");
-//			tabbedPane.addTab(("Page " + (i + 1) + "!"), icons[i], panels[i]);
 		}
 		
 		tabbedPane.validate();
@@ -52,9 +52,7 @@ public class MemeProgramGUI {
 		frame.add(tabbedPane);
 		frame.validate();
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
 		frame.setSize(1500, 1000);
-		
 		frame.setPreferredSize(frame.getSize());
 		
 		pagesDisplayed = 0;
@@ -81,13 +79,13 @@ public class MemeProgramGUI {
 	
 	public void addFinalTab(JPanel tempPanel) {
 		frame.setVisible(false);
-		//TODO add in a last panel including statistics and fun stuff!
 		
 		tabbedPane.addTab("Final Page" , icons[0], tempPanel);
 		tabbedPane.revalidate();
 		tabbedPane.doLayout();
 		frame.validate();
 		tabbedPane.setSelectedIndex(pagesDisplayed);
+		
 		frame.setVisible(true);
 	}
 	

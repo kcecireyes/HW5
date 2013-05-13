@@ -16,7 +16,7 @@ import javax.swing.ScrollPaneLayout;
 /**
  * The Meme Panel object standardizing how memes are displayed to a user!
  * @author Cecilia, Alice, Lowell
- * @version 4/28 1:00
+ * @version 5/13 1:00
  */
 
 public class MemeProgramPanel implements ActionListener {
@@ -90,55 +90,38 @@ public class MemeProgramPanel implements ActionListener {
 		while (imgur == null) {
 			try {
 				imgur = new MemeImgur();
-				System.out.println("I am trying to initialize imgur memes");
 			} catch (Exception f) {
-				System.out.println(f.getMessage());
-				//System.out.println("okay what the fuck is wrong?? ");
+				f.printStackTrace();
 				imgur = null;
 			}
 		}
+		
 		while (nineGag == null) {
 			try {
 				nineGag = new Meme9Gag();
-				//System.out.println("I am trying to initialize 9gag memes");
 			} catch (IndexOutOfBoundsException e) {
+				//Calls the alternate constructor for nineGag, accessing 10 more memes.
 				nineGag = new Meme9Gag(true);
-				System.out.println("an error seems to have occurred trying to initialize 9gag memes");
 			} catch (Exception f) {				
-				System.out.println("okay what the fuck is wrong?? 9 ");
-				System.out.println(f.getMessage());
+				f.printStackTrace();
 				nineGag = null;
 			}
 		}
-		
-
-
-
-
-
-
-
-
-
-
 
 		if (imgur.compareTo(nineGag) == -1) {
-			System.out.println("I am here aaaah! in -1");
+//			System.out.println("I am here aaaah! in -1");
 			memes[0] = imgur;
 			memes[1] = nineGag;
 		} else if (imgur.compareTo(nineGag) == 1) {
-			System.out.println("I am here aaaah! in 1");
+//			System.out.println("I am here aaaah! in 1");
 			memes[1] = imgur;
 			memes[0] = nineGag;
 		} else {
-			System.out.println("I am here aaaah! in else");
+//			System.out.println("I am here aaaah! in else");
 			throw new Exception();
 		}
 		
-		System.out.println(memes[0].toString());
-		System.out.println("is it here, is the problem here??? ");
-		System.out.println(memes[1].toString());
-		System.out.println("is it here, is the problem here??? ");
+		System.out.println("Memes successfully initialized for your newest Panel!");
 	}
 
 	private void initializeComponents() throws Exception{
@@ -157,14 +140,11 @@ public class MemeProgramPanel implements ActionListener {
 			images[i] = memes[i].getImage();
 			imageNames[i] = memes[i].getImageName();
 
-			System.out.println(images[i].toString());
-			picLabels[i] = new JLabel(new ImageIcon(images[i]));
-
-		    //I hope this wraps the text!
-			labels[i] = new JLabel(String.format("<html><div style=\"width:%dpx;\">%s</div><html>", 500, imageNames[i]));
-
+			labels[i] = new JLabel(String.format("<html><div style=\"width:%dpx;\">%s</div><html>", 550, imageNames[i]));
 			labels[i].setFont(new Font(labels[i].getFont().getFontName(), Font.BOLD, 25));
 			labels[i].revalidate();
+
+			picLabels[i] = new JLabel(new ImageIcon(images[i]));
 
 			buttons[i] = new JButton("Like");
 			buttons[i].addActionListener(this);
