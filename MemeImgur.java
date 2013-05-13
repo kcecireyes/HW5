@@ -1,9 +1,9 @@
-import java.awt.Image;
-import org.jsoup.nodes.*;
-import org.jsoup.select.*;
 import java.util.ArrayList;
-import javax.imageio.*;
+
 import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
 
 
 /**

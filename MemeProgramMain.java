@@ -3,12 +3,8 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.BoxLayout;
-import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
 
 /**
  * The main program of the meme-related program we're doing for HW5. 
@@ -28,7 +24,7 @@ public class MemeProgramMain implements ActionListener {
 	private static JLabel label;
 	private static JLabel count;
 	private static int loadedMemes = 0;
-	private static final int totalMemes = 10;
+	public static final int totalMemes = 10;
 	public static ActionListener listener;
 	
 //	private static JPanel pane;

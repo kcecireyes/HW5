@@ -2,7 +2,6 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
@@ -55,10 +54,10 @@ public class MemeProgramUser implements ActionListener{
 			preferenceResult.setFont(new Font(preferenceResult.getFont().getFontName(), Font.BOLD, 25));
 			if (lessPopular>morePopular) {
 				preferenceResult.setText(String.format("<html><div style=\"width:%dpx;\">%s</div><html>", 550, "Congrats! You are a nonconformist, hipster snob.\n" +"<\br>" +
-						"Out of 10 memes, you chose " + lessPopular + " that were of lesser popularity."));
+						"Out of "+ MemeProgramMain.totalMemes +" memes, you chose " + lessPopular + " that were of lesser popularity."));
 			} else if (morePopular > lessPopular) {
 				preferenceResult.setText(String.format("<html><div style=\"width:%dpx;\">%s</div><html>", 550, "< \br >" + "Congrats! You are a sheep. " + "<\br>"+
-						"Out of 10 memes, you chose " + morePopular + " that were of greater popularity."));
+						"Out of "+ MemeProgramMain.totalMemes +" memes, you chose " + morePopular + " that were of greater popularity."));
 			} else {
 				preferenceResult.setText(String.format("<html><div style=\"width:%dpx;\">%s</div><html>", 550, "Congrats. You probably don't have a personality."+"<\br>" +
 						"You chose an equal number of memes that were popular and as you did ones that were less popular. "));

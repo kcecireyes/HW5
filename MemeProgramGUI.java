@@ -1,11 +1,14 @@
- import java.awt.Dimension;
-
-import javax.swing.*;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+import javax.swing.JComponent;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JTabbedPane;
 
 /**
  * The main graphical portion of the meme-related program we're doing for HW5. 
  * @author Cecilia, Alice, Lowell
- * @version 5/4 2:15
+ * @version 5/13 1:00
  */
 
 public class MemeProgramGUI {
@@ -50,7 +53,7 @@ public class MemeProgramGUI {
 		frame.validate();
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
-		frame.setSize(new Dimension(1500, 1000));
+		frame.setSize(1500, 1000);
 		
 		frame.setPreferredSize(frame.getSize());
 		
