@@ -20,12 +20,12 @@ public class MemeProgramMain implements ActionListener {
 	 */
 	
 	private static MemeProgramUser user;
-	private static JFrame frame;
-	private static JLabel label;
-	private static JLabel count;
 	private static int loadedMemes = 0;
 	public static final int totalMemes = 10;
-	public static ActionListener listener;
+	private static JFrame frame = new JFrame("Your Quiz is Loading...");
+	private static JLabel label = new JLabel("Prepare to find out how mainstream your memes are!");
+	private static JLabel count = new JLabel(loadedMemes + "/" + totalMemes);
+	public static final ActionListener listener = new MemeProgramMain();
 	
 //	private static JPanel pane;
 //	private static JTextField userField;
@@ -36,17 +36,12 @@ public class MemeProgramMain implements ActionListener {
 		
 		user = new MemeProgramUser("Now Arbitrary *and* capricious!", totalMemes);
 		
-		listener = new MemeProgramMain();
-		
-		frame = new JFrame("Your Quiz is Loading...");
-		frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+		frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		frame.setSize(600, 600);
-		
-		frame.setVisible(false);
 		frame.setLayout(new BorderLayout());
-		label = new JLabel("Prepare to find out how mainstream your memes are!");
+		
 		label.setFont(new Font(label.getFont().getFontName(), Font.BOLD, 25));
-		count = new JLabel(loadedMemes + "/" + totalMemes);
+		
 		count.setFont(new Font(count.getFont().getFontName(), Font.BOLD, 100));
 		frame.add(label, BorderLayout.NORTH);
 		frame.add(count, BorderLayout.CENTER);
@@ -74,7 +69,7 @@ public class MemeProgramMain implements ActionListener {
 		 * This will update the loading screen whenever it is called.
 		 * @param ActionEvent arg0 (Currently requires nothing special.)
 		 */
-		frame.setVisible(false);
+//		frame.setVisible(false);
 		loadedMemes++;
 		count.setText(loadedMemes + "/" + totalMemes);
 		frame.validate();

@@ -9,8 +9,8 @@ import org.jsoup.select.Elements;
 
 /**
  * The abstract Meme object standardizing how memes are scraped from the web.
- * @author Lowell
- * @version 4/28 1:00
+ * @author Cecilia, Alice, Lowell
+ * @version 5/13 1:00
  */
 
 public abstract class MemeProgramMeme implements Comparable<MemeProgramMeme> {

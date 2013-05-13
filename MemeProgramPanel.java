@@ -29,6 +29,7 @@ public class MemeProgramPanel implements ActionListener {
 	private static int panelsLiked = 0;
 	private static int panelsMade = 0;
 	private final int thisPanel;
+	private static final JButton hidden = new JButton("");
 	
 	public MemeProgramPanel () throws Exception {
 		/**
@@ -60,13 +61,12 @@ public class MemeProgramPanel implements ActionListener {
 			}
 			
 			innerScrollPanels[i].setViewportView(innerPanels[i]);
-			
 			innerScrollPanels[i].validate();
 			outerPanel.add(innerScrollPanels[i]);	
 		}
 		
 		System.out.println("Your newest panel is ready to add to the GUI!");
-		MemeProgramMain.listener.actionPerformed(new ActionEvent(this, panelsMade, "Panel: " + panelsMade + " Loaded"));
+		MemeProgramMain.listener.actionPerformed(new ActionEvent(hidden, panelsMade, "Panel: " + panelsMade + " Loaded"));
 		panelsMade++;
 		
 	}
