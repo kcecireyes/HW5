@@ -32,12 +32,7 @@ public class MemeProgramMain implements ActionListener {
 	private static JLabel picLabel;
 	private static JLabel picLabel2;
 	public static ActionListener listener = new MemeProgramMain();
-	
-//	private static JPanel pane;
-//	private static JTextField userField;
-//	private static JTextField passField;
-//	private static JButton button;
-	
+
 	public static void main(String[] args) {
 		frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		frame.setLayout(new BorderLayout());
@@ -63,18 +58,6 @@ public class MemeProgramMain implements ActionListener {
 		
 		user = new MemeProgramUser("Now Arbitrary *and* capricious!", totalMemes);	
 		
-//		pane = new JPanel();
-//		pane.setLayout(new BoxLayout(pane, BoxLayout.PAGE_AXIS));
-//		userField = new JTextField("Username");
-//		pane.add(userField);
-//		passField = new JTextField("Password");
-//		pane.add(passField);
-//		button = new JButton("Submit");
-//		button.addActionListener(listener);
-//		pane.add(button);
-//		pane.validate();
-//		pane.doLayout();
-//		frame.add(pane);
 	}
 
 	@Override

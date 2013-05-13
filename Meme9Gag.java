@@ -10,7 +10,6 @@ import org.jsoup.select.Elements;
 
 public class Meme9Gag extends MemeProgramMeme implements Comparable<MemeProgramMeme> {
 	
-//	private final static String website = "http://www.9gag.com/";
 	private Elements gag;
 	private String imageURL;
 	private static ArrayList<String> images = new ArrayList<String>(0);
@@ -28,8 +27,6 @@ public class Meme9Gag extends MemeProgramMeme implements Comparable<MemeProgramM
 		 */
 		super("http://www.9gag.com/");
     	gag = super.rootElements;
-//    	System.out.println("okay the problem is in 9gag, I guess? in the main const");
-
 		imageURL = null;
 	}
     
@@ -40,7 +37,6 @@ public class Meme9Gag extends MemeProgramMeme implements Comparable<MemeProgramM
 		 */
 		super("http://www.9gag.com/trending");
     	gag = super.rootElements;
-//    	System.out.println("okay the problem is in 9gag, I guess? in the weird const");		
 		imageURL = null;
 	}
 
@@ -52,15 +48,12 @@ public class Meme9Gag extends MemeProgramMeme implements Comparable<MemeProgramM
     
     private ArrayList<String> scrapeImages() {
     	
-//		System.out.println("okay the problem is in 9gag, I guess? in scrapeImages");
 		Elements jpgs = gag.select("img[src$=.jpg]");
 		for (int i = 0; i<jpgs.size(); i++)  {
 			String jpgURL = jpgs.get(i).absUrl("src");
 			if (!jpgURL.contains("_tp_") && !images.contains(jpgURL)) {
-//				System.out.println(jpgURL);
 				images.add(jpgURL);
 			}
-//			System.out.println(testurl);
 		}
 		return images;
 		
@@ -73,19 +66,15 @@ public class Meme9Gag extends MemeProgramMeme implements Comparable<MemeProgramM
      * @return ArrayList<String> of a the image names
      */
     private ArrayList<String> scrapeImageNames() {
-			
-//		System.out.println("okay the problem is in 9gag, I guess? in scrapeImageNames");
+		
 		Elements names = gag.select("[alt]");
-	
-//		System.out.println(names.text());
+		
 		for (int i = 3; i<names.size()-3; i= i+3) {
 			String name = names.get(i).attr("alt");
 			if (!imageNames.contains(name)) {
-//				System.out.println(name);
 				imageNames.add(name);
 			}
 		}
-		
     	return imageNames;
     }
     
@@ -96,10 +85,9 @@ public class Meme9Gag extends MemeProgramMeme implements Comparable<MemeProgramM
      */
     
 	private ArrayList<String> scrapeUpvotes() {
+		
 		totalVotes = 0;
-//		System.out.println("okay the problem is in 9gag, I guess? in scrapeUpvotes ");
 		Elements votes = gag.select("span");
-	
 		for (int i = 0; i<votes.size(); i++) {
 			String upvote = votes.get(i).attr("votes");
 			if (!upvote.isEmpty()){
@@ -110,7 +98,6 @@ public class Meme9Gag extends MemeProgramMeme implements Comparable<MemeProgramM
 					totalVotes = totalVotes + Integer.parseInt(upvote);
 				}
 				if (!upvotes.contains(upvote)) {
-//					System.out.println(upvote);
 					upvotes.add(upvote);
 				}
 			}
@@ -133,23 +120,13 @@ public class Meme9Gag extends MemeProgramMeme implements Comparable<MemeProgramM
 		return imageURL;
 	}
     
-    /**
-     * This method doesn't do jack.
-     */
-	@Override
-	public boolean findImageName() {
-		// TODO Auto-generated method stub
-		return true;
-	}
 
 	/**
 	 * This method gets the image name from the ArrayList of image names in the spot
 	 * of the method call count. It then updates the call count.
-	 * 
 	 */
 	@Override
 	public boolean cleanImageName() {
-		// TODO Auto-generated method stub
 		imageNames = scrapeImageNames();
 		String imageName = imageNames.get(imageNameCallCount);
 			
@@ -158,15 +135,7 @@ public class Meme9Gag extends MemeProgramMeme implements Comparable<MemeProgramM
 		return true;
 	}
 	
-	/**
-	 * This method doesn't do jack.
-	 */
-	@Override
-	public boolean findUpvote() {
-		// TODO Auto-generated method stub Interior crocodile alligator, I drive a chevrolet movie theater.
-		return true;
-	}
-	
+
 	/**
 	 * This method takes the upvotes for a particular meme in the ArrayList
 	 * at the call count and divides it by the totalVotes. This value is multiplied
@@ -174,12 +143,10 @@ public class Meme9Gag extends MemeProgramMeme implements Comparable<MemeProgramM
 	 */
 	@Override
 	public boolean cleanUpvote() {
-		// TODO Auto-generated method stub
 		upvotes = scrapeUpvotes();
 		double upvote = Integer.parseInt(upvotes.get(voteCallCount));
 		double upvotePercentd = (upvote / totalVotes) * 100;
 		int upvotePercent = (int)upvotePercentd;
-//		System.out.println(upvotePercent);
 		
 		super.upvote = upvotePercent;
 		voteCallCount++;

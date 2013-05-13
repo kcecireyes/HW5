@@ -92,7 +92,7 @@ public abstract class MemeProgramMeme implements Comparable<MemeProgramMeme> {
 		/**
 		 * Finds the name or text of the selected meme, and formats it.
 		 */
-		imageNameValidity = findImageName() && cleanImageName();
+		imageNameValidity = cleanImageName();
 		return imageNameValidity;
 	}
 	
@@ -100,7 +100,7 @@ public abstract class MemeProgramMeme implements Comparable<MemeProgramMeme> {
 		/**
 		 * Finds popularity of the selected meme, and normalizes it.
 		 */
-		upvoteValidity = findUpvote() && cleanUpvote();
+		upvoteValidity = cleanUpvote();
 		return upvoteValidity;
 	}
 	
@@ -112,13 +112,10 @@ public abstract class MemeProgramMeme implements Comparable<MemeProgramMeme> {
 		 * @return int 0 if equal, -1 if this<that, 1 if this>that.
 		 */
 		if (getUpvote() == o.getUpvote()){
-//			System.out.println("these are the upvote percentages of imgur " + getUpvote() + "9gag " + o.getUpvote());
 			return 0;
 		} else if(getUpvote() < o.getUpvote()) {
-//			System.out.println("these are the upvote percentages of imgur " + getUpvote() + "9gag " + o.getUpvote());
 			return -1;
 		} else {
-//			System.out.println("these are the upvote percentages of imgur " + getUpvote() + "9gag " + o.getUpvote());
 			return 1;
 		}
 	}
@@ -158,12 +155,6 @@ public abstract class MemeProgramMeme implements Comparable<MemeProgramMeme> {
 		return true;
 	}
 	
-	/**
-	 * Must parse the name of this object's meme image.
-	 * @return boolean True if image text can be found.
-	 */
-	public abstract boolean findImageName();
-
 
 	
 	/**
@@ -172,15 +163,6 @@ public abstract class MemeProgramMeme implements Comparable<MemeProgramMeme> {
 	 */
 	public abstract boolean cleanImageName();
 
-	
-	
-	/**
-	 * Must parse the upvotes of this object's meme image.
-	 * @return boolean True if the upvote amount can be found.
-	 */
-	public abstract boolean findUpvote();
-
-	
 	
 	/**
 	 * Must take the upvotes, then normalize them for comparison.
