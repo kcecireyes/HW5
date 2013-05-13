@@ -143,17 +143,18 @@ public class MemeProgramPanel implements ActionListener {
 			labels[i] = new JLabel(String.format("<html><div style=\"width:%dpx;\">%s</div><html>", 550, imageNames[i]));
 			labels[i].setFont(new Font(labels[i].getFont().getFontName(), Font.BOLD, 25));
 			labels[i].revalidate();
-
-			picLabels[i] = new JLabel(new ImageIcon(images[i]));
-
+			
 			buttons[i] = new JButton("Like");
 			buttons[i].addActionListener(this);
 			buttons[i].setFont(new Font(buttons[i].getFont().getFontName(), Font.BOLD, 25));
 			buttons[i].revalidate();
+			
+			picLabels[i] = new JLabel(new ImageIcon(images[i]));
 
 			components.set(i, includeComponent(components.get(i), (JComponent)labels[i]));
-			components.set(i, includeComponent(components.get(i), (JComponent)picLabels[i]));
 			components.set(i, includeComponent(components.get(i), (JComponent)buttons[i]));
+			components.set(i, includeComponent(components.get(i), (JComponent)picLabels[i]));
+			
 		}
 	}
 
